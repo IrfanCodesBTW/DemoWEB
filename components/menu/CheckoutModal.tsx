@@ -121,53 +121,53 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 350 }}
-            className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-black/8 bg-white shadow-2xl z-10 text-black"
+            className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-primary/8 bg-background shadow-2xl z-10 text-text-primary"
           >
             {/* Success View */}
             {isSuccess ? (
               <div className="p-8 text-center flex flex-col items-center justify-center space-y-6">
-                <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-green-50 border border-green-200">
+                <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-veg/10 border border-veg/20">
                   <CheckCircle className="h-10 w-10 text-veg" />
                   <motion.div
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ repeat: Infinity, duration: 2 }}
-                    className="absolute inset-0 rounded-full border border-green-200/20"
+                    className="absolute inset-0 rounded-full border border-veg/20"
                   />
                 </div>
                 <div className="space-y-2">
-                  <h2 className="font-display italic text-2xl font-light text-black">
+                  <h2 className="font-display italic text-2xl font-light text-text-primary">
                     Order Confirmed!
                   </h2>
-                  <p className="text-xs sm:text-sm text-[#555550] max-w-sm mx-auto font-sans font-light">
+                  <p className="text-xs sm:text-sm text-text-secondary max-w-sm mx-auto font-sans font-light">
                     Thank you for dining with us. Your culinary journey is being prepared by our master chefs.
                   </p>
                 </div>
 
-                <div className="w-full bg-[#FAF9F5] p-5 rounded-xl border border-black/8 space-y-3 text-left text-xs font-mono text-[#555550]">
+                <div className="w-full bg-surface p-5 rounded-xl border border-primary/8 space-y-3 text-left text-xs font-mono text-text-secondary">
                   <div className="flex justify-between">
                     <span>Order Name:</span>
-                    <span className="text-black font-bold">{formData.name}</span>
+                    <span className="text-text-primary font-bold">{formData.name}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Dining Type:</span>
-                    <span className="text-black font-bold uppercase">{formData.type}</span>
+                    <span className="text-text-primary font-bold uppercase">{formData.type}</span>
                   </div>
                   {formData.type === "dinein" && (
                     <div className="flex justify-between">
                       <span>Table Number:</span>
-                      <span className="text-black font-bold">{formData.tableNum}</span>
+                      <span className="text-text-primary font-bold">{formData.tableNum}</span>
                     </div>
                   )}
-                  <div className="flex justify-between border-t border-black/5 pt-2 font-bold text-sm">
+                  <div className="flex justify-between border-t border-primary/5 pt-2 font-bold text-sm">
                     <span>Amount Paid:</span>
-                    <span className="text-black">₹{total}</span>
+                    <span className="text-text-primary">₹{total}</span>
                   </div>
                 </div>
 
                 <button
                   type="button"
                   onClick={handleFinish}
-                  className="w-full py-3.5 rounded-xl bg-black hover:bg-[#111111] text-white font-semibold uppercase tracking-widest text-xs shadow-md transition-colors cursor-pointer min-h-[44px]"
+                  className="w-full py-3.5 rounded-xl bg-primary hover:bg-primary-light text-background font-semibold uppercase tracking-widest text-xs shadow-md transition-colors cursor-pointer min-h-[44px]"
                 >
                   Return to Menu
                 </button>
@@ -176,15 +176,15 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
               /* Checkout Form View */
               <form onSubmit={handleSubmit} className="flex flex-col max-h-[85vh]">
                 {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-black/8 shrink-0">
+                <div className="flex items-center justify-between p-6 border-b border-primary/8 shrink-0">
                   <div className="flex items-center gap-2">
-                    <CreditCard className="h-5 w-5 text-black" />
+                    <CreditCard className="h-5 w-5 text-text-primary" />
                     <h2 className="font-display text-lg font-semibold uppercase tracking-wider">Checkout</h2>
                   </div>
                   <button
                     type="button"
                     onClick={onClose}
-                    className="p-2 rounded-full border border-black/8 hover:bg-black/3 text-black transition-colors cursor-pointer"
+                    className="p-2 rounded-full border border-primary/8 hover:bg-primary/3 text-text-primary transition-colors cursor-pointer"
                     aria-label="Close checkout"
                   >
                     <X className="h-4 w-4" />
@@ -192,10 +192,10 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                 </div>
 
                 {/* Form Fields */}
-                <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-[#FAF9F5] text-left">
+                <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-surface text-left">
                   {/* Name */}
                   <div className="space-y-1.5">
-                    <label htmlFor="name" className="text-xs font-semibold uppercase tracking-wider text-[#555550]">
+                    <label htmlFor="name" className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
                       Full Name *
                     </label>
                     <input
@@ -204,7 +204,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-black/10 text-sm text-black placeholder:text-[#8A8880] focus:outline-none focus:border-black"
+                      className="w-full px-4 py-2.5 rounded-xl bg-background border border-primary/10 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary"
                       placeholder="e.g. Rahul Sharma"
                     />
                     {errors.name && <p className="text-[10px] text-red-500 font-medium">{errors.name}</p>}
@@ -213,7 +213,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                   {/* Email & Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-[#555550]">
+                      <label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
                         Email Address *
                       </label>
                       <input
@@ -222,14 +222,14 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2.5 rounded-xl bg-white border border-black/10 text-sm text-black placeholder:text-[#8A8880] focus:outline-none focus:border-black"
+                        className="w-full px-4 py-2.5 rounded-xl bg-background border border-primary/10 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary"
                         placeholder="e.g. rahul@example.com"
                       />
                       {errors.email && <p className="text-[10px] text-red-500 font-medium">{errors.email}</p>}
                     </div>
 
                     <div className="space-y-1.5">
-                      <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-wider text-[#555550]">
+                      <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
                         Phone Number *
                       </label>
                       <input
@@ -238,7 +238,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2.5 rounded-xl bg-white border border-black/10 text-sm text-black placeholder:text-[#8A8880] focus:outline-none focus:border-black"
+                        className="w-full px-4 py-2.5 rounded-xl bg-background border border-primary/10 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary"
                         placeholder="10-digit mobile"
                       />
                       {errors.phone && <p className="text-[10px] text-red-500 font-medium">{errors.phone}</p>}
@@ -247,7 +247,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
 
                   {/* Service Type Selection */}
                   <div className="space-y-1.5">
-                    <label htmlFor="type" className="text-xs font-semibold uppercase tracking-wider text-[#555550]">
+                    <label htmlFor="type" className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
                       Dining Option *
                     </label>
                     <select
@@ -255,7 +255,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                       name="type"
                       value={formData.type}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-black/10 text-sm text-black focus:outline-none focus:border-black cursor-pointer"
+                      className="w-full px-4 py-2.5 rounded-xl bg-background border border-primary/10 text-sm text-text-primary focus:outline-none focus:border-primary cursor-pointer"
                     >
                       <option value="dinein">Dine-In (At Table)</option>
                       <option value="takeaway">Takeaway (Self Pick-up)</option>
@@ -266,7 +266,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                   {/* Conditional Table Number */}
                   {formData.type === "dinein" && (
                     <div className="space-y-1.5">
-                      <label htmlFor="tableNum" className="text-xs font-semibold uppercase tracking-wider text-[#555550]">
+                      <label htmlFor="tableNum" className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
                         Table Number *
                       </label>
                       <input
@@ -275,7 +275,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                         name="tableNum"
                         value={formData.tableNum}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2.5 rounded-xl bg-white border border-black/10 text-sm text-black placeholder:text-[#8A8880] focus:outline-none focus:border-black"
+                        className="w-full px-4 py-2.5 rounded-xl bg-background border border-primary/10 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary"
                         placeholder="e.g. Table 12"
                       />
                       {errors.tableNum && <p className="text-[10px] text-red-500 font-medium">{errors.tableNum}</p>}
@@ -285,7 +285,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                   {/* Conditional Address */}
                   {formData.type === "delivery" && (
                     <div className="space-y-1.5">
-                      <label htmlFor="address" className="text-xs font-semibold uppercase tracking-wider text-[#555550]">
+                      <label htmlFor="address" className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
                         Delivery Address *
                       </label>
                       <textarea
@@ -294,7 +294,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                         value={formData.address}
                         onChange={handleInputChange}
                         rows={2}
-                        className="w-full px-4 py-2.5 rounded-xl bg-white border border-black/10 text-sm text-black placeholder:text-[#8A8880] focus:outline-none focus:border-black resize-none"
+                        className="w-full px-4 py-2.5 rounded-xl bg-background border border-primary/10 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary resize-none"
                         placeholder="Enter full delivery address"
                       />
                       {errors.address && <p className="text-[10px] text-red-500 font-medium">{errors.address}</p>}
@@ -303,7 +303,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
 
                   {/* Special Notes */}
                   <div className="space-y-1.5">
-                    <label htmlFor="notes" className="text-xs font-semibold uppercase tracking-wider text-[#555550]">
+                    <label htmlFor="notes" className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
                       Special Cooking Notes
                     </label>
                     <textarea
@@ -312,22 +312,22 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, o
                       value={formData.notes}
                       onChange={handleInputChange}
                       rows={2}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-black/10 text-sm text-black placeholder:text-[#8A8880] focus:outline-none focus:border-black resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl bg-background border border-primary/10 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary resize-none"
                       placeholder="e.g. Make it extra spicy / No onions"
                     />
                   </div>
                 </div>
 
                 {/* Footer Submitting */}
-                <div className="p-6 border-t border-black/8 bg-white flex items-center justify-between shrink-0">
+                <div className="p-6 border-t border-primary/8 bg-background flex items-center justify-between shrink-0">
                   <div>
-                    <p className="text-xs text-[#8A8880] uppercase tracking-wider font-semibold">Total Payable</p>
-                    <p className="text-xl font-bold font-mono text-black">₹{total}</p>
+                    <p className="text-xs text-text-muted uppercase tracking-wider font-semibold">Total Payable</p>
+                    <p className="text-xl font-bold font-mono text-text-primary">₹{total}</p>
                   </div>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-black hover:bg-[#111111] text-white text-xs font-semibold uppercase tracking-widest shadow-md disabled:opacity-50 transition-all duration-300 cursor-pointer min-h-[44px]"
+                    className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-primary hover:bg-primary-light text-background text-xs font-semibold uppercase tracking-widest shadow-md disabled:opacity-50 transition-all duration-300 cursor-pointer min-h-[44px]"
                   >
                     {isSubmitting ? "Processing..." : "Place Order"}
                     {!isSubmitting && <ArrowRight className="h-4 w-4" />}

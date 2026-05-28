@@ -38,6 +38,58 @@
   --glass-hover: rgba(0, 0, 0, 0.03);
 
   --foreground: #111111;
+
+  /* ─── Glow & Utility Variables ─── */
+  --glow-color: rgba(0, 0, 0, 0.03);
+  --stroke-color: rgba(0, 0, 0, 0.2);
+  --gold-gradient: linear-gradient(135deg, #111111 0%, #444440 50%, #000000 100%);
+  --saffron-gradient: linear-gradient(135deg, #222222 0%, #444440 50%, #111111 100%);
+}
+
+.dark {
+  /* ─── Background ─── */
+  --background: #0A0806;
+  --surface: #100D0A;
+  --surface-2: #1A1410;
+  --surface-3: #241C16;
+
+  /* ─── Accents ─── */
+  --primary: #F5C67A;
+  --primary-light: #FAF0E6;
+  --primary-dark: #A07840;
+
+  --accent: #F5C67A;
+  --accent-light: #FAF0E6;
+
+  --gold: #F5C67A;
+  --gold-soft: #A07840;
+
+  /* ─── Text ─── */
+  --text-primary: #F5F0E8;
+  --text-secondary: #9A8B78;
+  --text-muted: #524438;
+
+  /* ─── Borders ─── */
+  --border: rgba(255, 220, 150, 0.08);
+
+  /* ─── Status ─── */
+  --veg: #5A8C5A;
+  --nonveg: #C0392B;
+  --success: #5A8C5A;
+  --error: #C0392B;
+
+  /* ─── Glass Surfaces ─── */
+  --glass: rgba(16, 13, 10, 0.85);
+  --glass-border: rgba(255, 220, 150, 0.08);
+  --glass-hover: rgba(255, 220, 150, 0.03);
+
+  --foreground: #F5F0E8;
+
+  /* ─── Glow & Utility Variables ─── */
+  --glow-color: rgba(245, 198, 122, 0.06);
+  --stroke-color: rgba(255, 220, 150, 0.2);
+  --gold-gradient: linear-gradient(135deg, #FAF0E6 0%, #F5C67A 50%, #A07840 100%);
+  --saffron-gradient: linear-gradient(135deg, #FAF0E6 0%, #A07840 50%, #FAF9F5 100%);
 }
 
 @theme {
@@ -84,23 +136,23 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #FFFFFF;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #EBE9E2;
+  background: var(--surface-3);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #111111;
+  background: var(--primary);
 }
 
 /* ─── Base Resets & Typography ─── */
 html {
   scroll-behavior: smooth;
-  background-color: #FFFFFF;
-  color: #111111;
+  background-color: var(--background);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -125,58 +177,58 @@ body {
 
 /* ─── Glassmorphism ─── */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--glass);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--glass-border);
 }
 
 .glass-card {
-  background: rgba(250, 249, 245, 0.75);
+  background: var(--surface);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s ease,
               background-color 0.35s ease;
 }
 
 .glass-card:hover {
-  background: rgba(244, 242, 236, 0.9);
-  border-color: rgba(0, 0, 0, 0.15);
+  background: var(--surface-2);
+  border-color: var(--gold-soft);
   transform: translateY(-3px);
 }
 
 /* ─── Glow Gradients ─── */
 .gold-glow {
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.03) 0%, transparent 70%);
+  background: radial-gradient(circle at center, var(--glow-color) 0%, transparent 70%);
 }
 
 .saffron-glow {
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.02) 0%, transparent 75%);
+  background: radial-gradient(circle at center, var(--glow-color) 0%, transparent 75%);
 }
 
 /* ─── Focus Outlines ─── */
 .focus-visible-ring:focus-visible {
-  outline: 2px solid #111111;
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
 /* ─── Text Effects ─── */
 .text-stroke-gold {
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
+  -webkit-text-stroke: 1px var(--stroke-color);
   color: transparent;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #111111 0%, #444440 50%, #000000 100%);
+  background: var(--gold-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-saffron {
-  background: linear-gradient(135deg, #222222 0%, #444440 50%, #111111 100%);
+  background: var(--saffron-gradient, linear-gradient(135deg, #222222 0%, #444440 50%, #111111 100%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -193,8 +245,8 @@ body.menu-open {
 
 /* ─── Select Dropdown Styling ─── */
 select option {
-  background-color: #FAF9F5;
-  color: #111111;
+  background-color: var(--surface);
+  color: var(--text-primary);
 }
 
 /* ─── Scrollbar-none Utility ─── */

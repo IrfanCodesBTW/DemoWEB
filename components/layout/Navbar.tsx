@@ -4,8 +4,9 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Menu, X, UtensilsCrossed, Calendar, Search } from "lucide-react";
+import { ShoppingBag, Menu, X, UtensilsCrossed, Calendar, Search, Sun, Moon } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { useTheme } from "@/context/ThemeContext";
 import { CartDrawer } from "@/components/ui/CartDrawer";
 import { MENU_DATA, CATEGORY_TO_CUISINE } from "@/data/menu";
 
@@ -53,6 +54,7 @@ export const Navbar: React.FC = () => {
 
   const pathname = usePathname();
   const { cartCount } = useCart();
+  const { theme, toggleTheme } = useTheme();
   const menuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
 
@@ -206,29 +208,29 @@ export const Navbar: React.FC = () => {
         <div
           className={`mx-auto max-w-7xl transition-[background-color,border-color,padding,box-shadow,border-radius] duration-300 ${
             isScrolled
-              ? "bg-white/94 backdrop-blur-xl border-b border-black/8 shadow-sm py-3 px-4 sm:px-6 md:px-8 rounded-none"
+              ? "bg-background/94 backdrop-blur-xl border-b border-border-custom shadow-sm py-3 px-4 sm:px-6 md:px-8 rounded-none"
               : "bg-transparent py-5 px-3 sm:px-4"
           } flex items-center justify-between`}
         >
           {/* Logo & Dynamic Status Indicator */}
           <div className="flex items-center gap-4 shrink-0">
             <Link href="/" className="flex flex-col group cursor-pointer focus-visible-ring rounded-lg">
-              <span className="font-display text-2xl font-normal italic tracking-wide text-black group-hover:text-neutral-700 transition-colors duration-200">
+              <span className="font-display text-2xl font-normal italic tracking-wide text-text-primary group-hover:text-text-secondary transition-colors duration-200">
                 Cafe
               </span>
-              <span className="text-[8px] tracking-[0.25em] font-mono text-[#555550] -mt-1 uppercase">
+              <span className="text-[8px] tracking-[0.25em] font-mono text-text-secondary -mt-1 uppercase">
                 Multi Cuisine
               </span>
             </Link>
 
             {status && (
-              <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF9F5] border border-black/8">
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border-custom">
                 <span
                   className={`w-1.5 h-1.5 rounded-full ${
-                    status.isOpen ? "bg-[#22C55E]" : "bg-[#EF4444]"
+                    status.isOpen ? "bg-veg" : "bg-nonveg"
                   } animate-pulse-slow`}
                 />
-                <span className="text-[9px] font-mono font-medium text-[#555550] tracking-wider uppercase">
+                <span className="text-[9px] font-mono font-medium text-text-secondary tracking-wider uppercase">
                   {status.text}
                 </span>
               </div>
@@ -243,15 +245,15 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`relative text-[11px] font-medium tracking-[0.12em] uppercase transition-colors duration-200 hover:text-black cursor-pointer focus-visible-ring py-1 px-1.5 ${
-                    isActive ? "text-black" : "text-[#555550]"
+                  className={`relative text-[11px] font-medium tracking-[0.12em] uppercase transition-colors duration-200 hover:text-text-primary cursor-pointer focus-visible-ring py-1 px-1.5 ${
+                    isActive ? "text-text-primary" : "text-text-secondary"
                   }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.span
                       layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-1 right-1 h-[1.5px] bg-black rounded-full"
+                      className="absolute bottom-0 left-1 right-1 h-[1.5px] bg-primary rounded-full"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -262,10 +264,34 @@ export const Navbar: React.FC = () => {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-1.5 sm:gap-2 md:gap-4 shrink-0">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 sm:p-2.5 rounded-full border border-primary/8 hover:border-primary/25 hover:bg-primary/3 text-text-primary transition-colors duration-200 cursor-pointer focus-visible-ring"
+              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={theme}
+                  initial={{ rotate: -45, opacity: 0, scale: 0.8 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: 45, opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center justify-center"
+                >
+                  {theme === "light" ? (
+                    <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
+                  ) : (
+                    <Sun className="h-4 w-4 sm:h-5 sm:w-5 animate-spin-slow" />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </button>
+
             {/* Global Search Button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="p-2 sm:p-2.5 rounded-full border border-black/8 hover:border-black/25 hover:bg-black/3 text-[#111111] transition-colors duration-200 cursor-pointer focus-visible-ring"
+              className="p-2 sm:p-2.5 rounded-full border border-primary/8 hover:border-primary/25 hover:bg-primary/3 text-text-primary transition-colors duration-200 cursor-pointer focus-visible-ring"
               aria-label="Open search menu"
             >
               <Search className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -274,7 +300,7 @@ export const Navbar: React.FC = () => {
             {/* Cart Button */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2 sm:p-2.5 rounded-full border border-black/8 hover:border-black/25 hover:bg-black/3 text-[#111111] transition-colors duration-200 cursor-pointer focus-visible-ring"
+              className="relative p-2 sm:p-2.5 rounded-full border border-primary/8 hover:border-primary/25 hover:bg-primary/3 text-text-primary transition-colors duration-200 cursor-pointer focus-visible-ring"
               aria-label="Open shopping cart"
               id="cart-button"
             >
@@ -285,7 +311,7 @@ export const Navbar: React.FC = () => {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
-                    className="absolute -top-1 -right-1 sm:-top-1.5 sm:-right-1.5 flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-black text-[9px] sm:text-[10px] font-bold text-white shadow-md border border-white"
+                    className="absolute -top-1 -right-1 sm:-top-1.5 sm:-right-1.5 flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-primary text-[9px] sm:text-[10px] font-bold text-background shadow-md border border-background"
                   >
                     {cartCount}
                   </motion.span>
@@ -297,9 +323,9 @@ export const Navbar: React.FC = () => {
             <motion.div
               animate={{
                 boxShadow: [
-                  "0 0 0 0 rgba(17, 17, 17, 0.25)",
-                  "0 0 0 10px rgba(17, 17, 17, 0)",
-                  "0 0 0 10px rgba(17, 17, 17, 0)"
+                  `0 0 0 0 ${theme === "dark" ? "rgba(245, 198, 122, 0.35)" : "rgba(17, 17, 17, 0.25)"}`,
+                  `0 0 0 10px ${theme === "dark" ? "rgba(245, 198, 122, 0)" : "rgba(17, 17, 17, 0)"}`,
+                  `0 0 0 10px ${theme === "dark" ? "rgba(245, 198, 122, 0)" : "rgba(17, 17, 17, 0)"}`
                 ]
               }}
               transition={{
@@ -311,7 +337,7 @@ export const Navbar: React.FC = () => {
             >
               <Link
                 href="/reservations"
-                className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/12 hover:border-black text-[#555550] hover:bg-black hover:text-white text-xs font-semibold uppercase tracking-[0.08em] transition-all duration-300 focus-visible-ring cursor-pointer"
+                className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/12 hover:border-primary text-text-secondary hover:text-background hover:bg-primary text-xs font-semibold uppercase tracking-[0.08em] transition-all duration-300 focus-visible-ring cursor-pointer"
               >
                 <Calendar className="h-4 w-4" />
                 Book Table
@@ -322,7 +348,7 @@ export const Navbar: React.FC = () => {
             <button
               ref={hamburgerRef}
               onClick={toggleMenu}
-              className="p-2 sm:p-2.5 rounded-full border border-black/8 hover:border-black/25 hover:bg-black/3 text-[#111111] md:hidden transition-colors duration-200 cursor-pointer focus-visible-ring"
+              className="p-2 sm:p-2.5 rounded-full border border-primary/8 hover:border-primary/25 hover:bg-primary/3 text-text-primary md:hidden transition-colors duration-200 cursor-pointer focus-visible-ring"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
@@ -342,16 +368,16 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] bg-white backdrop-blur-2xl flex flex-col justify-between p-6 md:hidden"
+            className="fixed inset-0 z-[100] bg-background backdrop-blur-2xl flex flex-col justify-between p-6 md:hidden"
           >
             {/* Overlay Header */}
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-                <span className="font-display text-2xl italic font-normal tracking-wide text-black">Cafe</span>
+                <span className="font-display text-2xl italic font-normal tracking-wide text-text-primary">Cafe</span>
               </Link>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 rounded-full border border-black/8 text-black"
+                className="p-2 rounded-full border border-primary/8 text-text-primary hover:bg-primary/3"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />
@@ -374,7 +400,7 @@ export const Navbar: React.FC = () => {
                       href={link.path}
                       onClick={() => setIsOpen(false)}
                       className={`font-display italic text-4xl transition-colors duration-200 ${
-                        isActive ? "text-black font-semibold" : "text-[#555550] hover:text-black"
+                        isActive ? "text-text-primary font-semibold" : "text-text-secondary hover:text-text-primary"
                       }`}
                     >
                       {link.name}
@@ -385,11 +411,11 @@ export const Navbar: React.FC = () => {
             </nav>
 
             {/* Overlay Footer */}
-            <div className="border-t border-black/8 pt-6 space-y-3 pl-4">
-              <a href="tel:+914012345678" className="block text-sm font-semibold text-black hover:underline">
+            <div className="border-t border-primary/8 pt-6 space-y-3 pl-4">
+              <a href="tel:+914012345678" className="block text-sm font-semibold text-text-primary hover:underline">
                 Call Host: +91 40 1234 5678
               </a>
-              <p className="text-xs text-[#8A8880] font-sans">
+              <p className="text-xs text-text-muted font-sans">
                 Open Daily: 12pm – 11pm (Breakfast: 7:30am – 10:30am)
               </p>
             </div>
@@ -405,7 +431,7 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[150] bg-white/98 backdrop-blur-2xl flex flex-col p-6 sm:p-12 md:p-20 overflow-y-auto"
+            className="fixed inset-0 z-[150] bg-background/98 backdrop-blur-2xl flex flex-col p-6 sm:p-12 md:p-20 overflow-y-auto"
             onKeyDown={(e) => {
               if (e.key === "Escape") {
                 setIsSearchOpen(false);
@@ -431,8 +457,8 @@ export const Navbar: React.FC = () => {
             }}
           >
             {/* Search Header */}
-            <div className="flex items-center justify-between border-b border-black/8 pb-4">
-              <span className="text-[10px] tracking-[0.25em] font-mono text-[#8A8880] uppercase">
+            <div className="flex items-center justify-between border-b border-primary/8 pb-4">
+              <span className="text-[10px] tracking-[0.25em] font-mono text-text-muted uppercase">
                 Sensory Search
               </span>
               <button
@@ -440,7 +466,7 @@ export const Navbar: React.FC = () => {
                   setIsSearchOpen(false);
                   setSearchQuery("");
                 }}
-                className="p-2 rounded-full border border-black/8 text-black hover:bg-black/3"
+                className="p-2 rounded-full border border-primary/8 text-text-primary hover:bg-primary/3"
                 aria-label="Close search"
               >
                 <X className="h-5 w-5" />
@@ -455,14 +481,14 @@ export const Navbar: React.FC = () => {
                 placeholder="Search dishes, drinks..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full text-3xl sm:text-4xl md:text-5xl font-display italic font-light bg-transparent text-black border-none outline-none placeholder:text-black/10 focus:ring-0"
+                className="w-full text-3xl sm:text-4xl md:text-5xl font-display italic font-light bg-transparent text-text-primary border-none outline-none placeholder:text-text-primary/10 focus:ring-0"
               />
 
               {/* Staggered Search Results */}
               <div className="mt-10 md:mt-16 space-y-4">
                 {searchQuery.trim() !== "" && searchResults.length === 0 ? (
                   <div className="text-left py-4">
-                    <p className="text-[#8A8880] font-sans text-sm">
+                    <p className="text-text-muted font-sans text-sm">
                       We don&apos;t have that — but you might love our{" "}
                       <Link
                         href="/menu?search=Incredible%20Special%20Chicken"
@@ -470,7 +496,7 @@ export const Navbar: React.FC = () => {
                           setIsSearchOpen(false);
                           setSearchQuery("");
                         }}
-                        className="text-black font-semibold underline hover:text-[#555550]"
+                        className="text-text-primary font-semibold underline hover:text-text-secondary"
                       >
                         Incredible Special Chicken →
                       </Link>
@@ -493,12 +519,12 @@ export const Navbar: React.FC = () => {
                           }}
                           onMouseEnter={() => setSearchSelectedIndex(idx)}
                           className={`flex items-center justify-between p-3.5 rounded-xl cursor-pointer transition-colors duration-200 ${
-                            isSelected ? "bg-black/5" : "bg-transparent hover:bg-black/1.5"
+                            isSelected ? "bg-primary/5" : "bg-transparent hover:bg-primary/1.5"
                           }`}
                         >
                           <div className="flex items-center gap-3.5">
                             {/* Image Thumbnail */}
-                            <div className="relative h-10 w-10 rounded-full overflow-hidden border border-black/8 shrink-0">
+                            <div className="relative h-10 w-10 rounded-full overflow-hidden border border-primary/8 shrink-0">
                               <img
                                 src={getSearchFoodImage(item.name, item.categoryName)}
                                 alt={item.name}
@@ -508,14 +534,14 @@ export const Navbar: React.FC = () => {
                             <div>
                               <div className="flex items-center gap-1.5">
                                 <span className={`w-1.5 h-1.5 rounded-full ${item.isVeg ? "bg-veg" : "bg-nonveg"}`} />
-                                <h4 className="text-sm font-semibold text-black">{item.name}</h4>
+                                <h4 className="text-sm font-semibold text-text-primary">{item.name}</h4>
                               </div>
-                              <span className="text-[10px] font-mono text-[#8A8880] uppercase tracking-wider">
+                              <span className="text-[10px] font-mono text-text-muted uppercase tracking-wider">
                                 {item.categoryName}
                               </span>
                             </div>
                           </div>
-                          <span className="font-mono text-sm font-bold text-black">₹{item.price}</span>
+                          <span className="font-mono text-sm font-bold text-text-primary">₹{item.price}</span>
                         </motion.div>
                       );
                     })}

@@ -63,19 +63,19 @@ export const CustomCursor: React.FC = () => {
     <>
       {/* Outer Glow Ring */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-50 h-8 w-8 rounded-full border border-black/30"
+        className="pointer-events-none fixed top-0 left-0 z-50 h-8 w-8 rounded-full border border-primary/30"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
           translateX: "-50%",
           translateY: "-50%",
           scale: isHovered ? 1.5 : 1,
-          backgroundColor: isHovered ? "rgba(0, 0, 0, 0.06)" : "transparent",
+          backgroundColor: isHovered ? "var(--border)" : "transparent",
         }}
       />
       {/* Inner Dot */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-50 h-2 w-2 rounded-full bg-black"
+        className="pointer-events-none fixed top-0 left-0 z-50 h-2 w-2 rounded-full bg-primary"
         style={{
           x: innerXSpring,
           y: innerYSpring,

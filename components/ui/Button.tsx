@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-primary to-accent hover:from-primary-light hover:to-accent-light text-white shadow-lg border border-gold/30 hover:border-gold/50 shadow-primary/10 hover:shadow-primary/20",
+      "bg-gradient-to-r from-primary to-accent hover:from-primary-light hover:to-accent-light text-background shadow-lg border border-gold/30 hover:border-gold/50 shadow-primary/10 hover:shadow-primary/20",
     secondary:
       "border border-gold text-gold hover:bg-gold hover:text-background",
     glass:

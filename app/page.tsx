@@ -224,7 +224,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* SECTION 1: HERO */}
-      <section className="relative h-[100svh] w-full flex items-center justify-center overflow-hidden bg-[#FAF9F5]">
+      <section className="relative h-[100svh] w-full flex items-center justify-center overflow-hidden bg-background">
         <FloatingSpices />
 
         {/* Ken Burns image background overlay (luminosity blend) */}
@@ -246,7 +246,7 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="flex items-center justify-center gap-2"
           >
-            <span className="text-[10px] sm:text-xs font-semibold font-sans tracking-[0.22em] text-[#8A8880] uppercase">
+            <span className="text-[10px] sm:text-xs font-semibold font-sans tracking-[0.22em] text-text-muted uppercase">
               EST. 2018 · PARK LANE SECUNDERABAD · MULTI CUISINE
             </span>
           </motion.div>
@@ -255,7 +255,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="text-cinematic-hero text-[#111111] font-display italic font-light tracking-tight leading-none"
+            className="text-cinematic-hero text-text-primary font-display italic font-light tracking-tight leading-none"
           >
             Where Fire <br /> Meets Flour
           </motion.h1>
@@ -264,7 +264,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-sm sm:text-base md:text-lg text-[#555550] max-w-xl mx-auto font-sans font-light leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-text-secondary max-w-xl mx-auto font-sans font-light leading-relaxed"
           >
             Hand-crafted clay-oven roasts, wood-fired sizzles, and delicate confectionaries. Made with locally sourced ingredients for sensory anticipation.
           </motion.p>
@@ -278,14 +278,14 @@ export default function HomePage() {
           >
             <Link
               href="/reservations"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#111111] hover:bg-black text-white text-xs font-semibold uppercase tracking-[0.10em] shadow-md transition-all duration-300 transform hover:scale-[1.02] min-h-[48px]"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary hover:bg-primary-light text-background text-xs font-semibold uppercase tracking-[0.10em] shadow-md transition-all duration-300 transform hover:scale-[1.02] min-h-[48px]"
             >
               Reserve Tonight
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/menu"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-black/15 text-[#555550] hover:text-black hover:border-black text-xs font-semibold uppercase tracking-[0.10em] transition-all duration-300 min-h-[48px]"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-primary/15 text-text-secondary hover:text-text-primary hover:border-primary text-xs font-semibold uppercase tracking-[0.10em] transition-all duration-300 min-h-[48px]"
             >
               View Menu Book
             </Link>
@@ -296,7 +296,7 @@ export default function HomePage() {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-10 text-[#8A8880]"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-10 text-text-muted"
         >
           <span className="text-[9px] font-sans tracking-[0.16em] uppercase">scroll to explore</span>
           <ChevronRight className="h-4 w-4 rotate-90" />
@@ -304,30 +304,30 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 2: THE MOOD BAR */}
-      <section className="relative w-full bg-[#F4F2EC] border-y border-border-custom z-10 py-5">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-3 divide-x divide-black/8 text-center items-center">
+      <section className="relative w-full bg-surface-2 border-y border-border-custom z-10 py-5">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-3 divide-x divide-border-custom text-center items-center">
           <div className="space-y-1">
-            <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-[#8A8880] uppercase">Open Today</p>
-            <h4 className="font-display italic text-lg sm:text-2xl font-normal text-black leading-none">12pm – 11pm</h4>
+            <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-text-muted uppercase">Open Today</p>
+            <h4 className="font-display italic text-lg sm:text-2xl font-normal text-text-primary leading-none">12pm – 11pm</h4>
           </div>
           <div className="space-y-1">
-            <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-[#8A8880] uppercase">Avg. Rating</p>
-            <h4 className="font-display italic text-lg sm:text-2xl font-normal text-black leading-none">★ 4.9 <span className="text-xs font-sans not-italic text-[#8A8880]">(1,200+ reviews)</span></h4>
+            <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-text-muted uppercase">Avg. Rating</p>
+            <h4 className="font-display italic text-lg sm:text-2xl font-normal text-text-primary leading-none">★ 4.9 <span className="text-xs font-sans not-italic text-text-muted">(1,200+ reviews)</span></h4>
           </div>
           <div className="space-y-1">
-            <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-[#8A8880] uppercase">Est. Wait</p>
-            <h4 className="font-display italic text-lg sm:text-2xl font-normal text-black leading-none">~25 min</h4>
+            <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-text-muted uppercase">Est. Wait</p>
+            <h4 className="font-display italic text-lg sm:text-2xl font-normal text-text-primary leading-none">~25 min</h4>
           </div>
         </div>
       </section>
 
       {/* SECTION 3: SIGNATURE DISHES (Chef's Table Asymmetric Grid) */}
-      <section className="py-20 sm:py-28 bg-white relative z-10">
+      <section className="py-20 sm:py-28 bg-background relative z-10">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           {/* Stacked labels */}
           <div className="text-left mb-12 sm:mb-16 space-y-1.5">
-            <span className="text-[10px] tracking-[0.18em] font-sans text-[#8A8880] uppercase block">TONIGHT'S PICKS</span>
-            <h2 className="font-display italic text-4xl sm:text-5xl text-[#111111] font-light leading-none">What We&apos;re Proud Of</h2>
+            <span className="text-[10px] tracking-[0.18em] font-sans text-text-muted uppercase block">TONIGHT'S PICKS</span>
+            <h2 className="font-display italic text-4xl sm:text-5xl text-text-primary font-light leading-none">What We&apos;re Proud Of</h2>
           </div>
 
           {/* Asymmetric Dish Grid */}
@@ -351,7 +351,7 @@ export default function HomePage() {
                       transition: { duration: 0.75, ease: [0.0, 0.0, 0.2, 1.0] }
                     }
                   }}
-                  className={`relative flex flex-col rounded-xl overflow-hidden bg-[#FAF9F5] border border-black/8 hover:border-black/20 transition-colors duration-300 group cursor-pointer ${
+                  className={`relative flex flex-col rounded-xl overflow-hidden bg-surface border border-border-custom hover:border-primary/20 transition-colors duration-300 group cursor-pointer ${
                     dish.isHero ? "md:col-span-6" : "md:col-span-3"
                   }`}
                   onClick={() => setSelectedDish(dish)}
@@ -380,8 +380,8 @@ export default function HomePage() {
                     </motion.div>
 
                     {/* Quick View slide-up overlay */}
-                    <div className="absolute inset-x-0 bottom-0 h-12 bg-white/94 backdrop-blur-sm border-t border-black/8 flex items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <span className="text-[10px] font-sans tracking-[0.14em] text-black font-semibold uppercase">
+                    <div className="absolute inset-x-0 bottom-0 h-12 bg-background/94 backdrop-blur-sm border-t border-border-custom flex items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <span className="text-[10px] font-sans tracking-[0.14em] text-text-primary font-semibold uppercase">
                         View Culinary Stage
                       </span>
                     </div>
@@ -391,14 +391,14 @@ export default function HomePage() {
                       <span
                         className={`text-[8px] font-sans tracking-wider font-bold uppercase px-2.5 py-1 rounded-full border ${
                           dish.isVeg
-                            ? "bg-green-50 border-green-200 text-veg"
-                            : "bg-red-50 border-red-200 text-nonveg"
+                            ? "bg-veg/10 border-veg/20 text-veg"
+                            : "bg-nonveg/10 border-nonveg/20 text-nonveg"
                         }`}
                       >
                         {dish.isVeg ? "VEG" : "NON-VEG"}
                       </span>
                       {dish.isSpicy && (
-                        <span className="text-[8px] font-sans tracking-wider font-bold uppercase px-2.5 py-1 rounded-full border bg-red-50 border-red-200 text-nonveg">
+                        <span className="text-[8px] font-sans tracking-wider font-bold uppercase px-2.5 py-1 rounded-full border bg-nonveg/10 border border-nonveg/20 text-nonveg">
                           🌶 SPICY
                         </span>
                       )}
@@ -408,25 +408,25 @@ export default function HomePage() {
                   {/* Card Info */}
                   <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                     <div className="space-y-2">
-                      <span className="text-[9px] font-sans tracking-[0.15em] text-[#8A8880] uppercase">
+                      <span className="text-[9px] font-sans tracking-[0.15em] text-text-muted uppercase">
                         {dish.course}
                       </span>
                       <h3
-                        className={`font-display italic font-normal text-black ${
+                        className={`font-display italic font-normal text-text-primary ${
                           dish.isHero ? "text-2xl sm:text-3xl" : "text-lg"
                         }`}
                       >
                         {dish.name}
                       </h3>
-                      <p className="text-xs text-[#555550] line-clamp-2 leading-relaxed font-light font-sans">
+                      <p className="text-xs text-text-secondary line-clamp-2 leading-relaxed font-light font-sans">
                         {dish.description}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between pt-2 border-t border-black/6">
+                    <div className="flex items-center justify-between pt-2 border-t border-border-custom">
                       {/* Monospaced price */}
-                      <div className="flex items-baseline font-mono text-black">
-                        <span className="text-[10px] text-[#8A8880] mr-1">₹</span>
+                      <div className="flex items-baseline font-mono text-text-primary">
+                        <span className="text-[10px] text-text-muted mr-1">₹</span>
                         <span className="text-base font-bold">{dish.price}</span>
                       </div>
 
@@ -436,7 +436,7 @@ export default function HomePage() {
                           e.stopPropagation();
                           addToCart({ name: dish.name, price: dish.price, isVeg: dish.isVeg, isSpicy: dish.isSpicy });
                         }}
-                        className="text-[10px] font-sans font-semibold tracking-wider text-black border border-black/15 hover:bg-black hover:text-white px-3.5 py-1.5 rounded-full transition-colors"
+                        className="text-[10px] font-sans font-semibold tracking-wider text-text-primary border border-primary/15 hover:bg-primary hover:text-background px-3.5 py-1.5 rounded-full transition-colors cursor-pointer"
                       >
                         Plating {qty > 0 ? `(${qty})` : "+"}
                       </button>
@@ -450,11 +450,11 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 4: MENU CATEGORIES */}
-      <section className="py-16 sm:py-20 bg-[#FAF9F5] border-y border-border-custom relative z-10">
+      <section className="py-16 sm:py-20 bg-surface border-y border-border-custom relative z-10">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-left mb-10 space-y-1">
-            <span className="text-[10px] tracking-[0.18em] font-sans text-[#8A8880] uppercase block">THE KITCHEN MAP</span>
-            <h2 className="font-display italic text-3xl sm:text-4xl text-black font-light leading-none">Map of Culinary Fires</h2>
+            <span className="text-[10px] tracking-[0.18em] font-sans text-text-muted uppercase block">THE KITCHEN MAP</span>
+            <h2 className="font-display italic text-3xl sm:text-4xl text-text-primary font-light leading-none">Map of Culinary Fires</h2>
           </div>
 
           {/* Horizontal scroll grid */}
@@ -463,7 +463,7 @@ export default function HomePage() {
               <Link
                 key={cat.name}
                 href={`/menu?cuisine=All Cuisines`}
-                className="w-[200px] h-[280px] shrink-0 relative rounded-2xl overflow-hidden border border-black/8 hover:border-black/20 group cursor-pointer"
+                className="w-[200px] h-[280px] shrink-0 relative rounded-2xl overflow-hidden border border-border-custom hover:border-primary/20 group cursor-pointer"
               >
                 <img
                   src={cat.image}
@@ -472,7 +472,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 text-left space-y-1">
-                  <h3 className="font-display italic text-2xl text-white font-light group-hover:text-[#FAF9F5] transition-colors flex items-center justify-between">
+                  <h3 className="font-display italic text-2xl text-white font-light group-hover:text-primary transition-colors flex items-center justify-between">
                     {cat.name}
                     <ChevronRight className="h-4 w-4 transform opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-white" />
                   </h3>
@@ -485,35 +485,35 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 5: RESERVATION STRIP */}
-      <section className="py-20 sm:py-24 bg-[#F4F2EC] relative z-10 border-b border-border-custom">
+      <section className="py-20 sm:py-24 bg-surface-2 relative z-10 border-b border-border-custom">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Text */}
           <div className="lg:col-span-5 space-y-6 text-left">
-            <span className="text-[10px] tracking-[0.18em] font-sans text-[#8A8880] uppercase block">BOOK A TABLE</span>
-            <h2 className="font-display italic text-4xl sm:text-5xl md:text-6xl text-black font-light leading-none">Join Us Tonight</h2>
-            <p className="text-xs sm:text-sm text-[#555550] leading-relaxed font-light font-sans max-w-sm">
+            <span className="text-[10px] tracking-[0.18em] font-sans text-text-muted uppercase block">BOOK A TABLE</span>
+            <h2 className="font-display italic text-4xl sm:text-5xl md:text-6xl text-text-primary font-light leading-none">Join Us Tonight</h2>
+            <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light font-sans max-w-sm">
               We prepare the tables ahead of your arrival. Secure private visual space or dining lounge table assignments.
             </p>
 
             {/* Hours Block */}
-            <div className="space-y-2 pt-4 border-t border-black/8 font-mono text-xs text-[#555550]">
+            <div className="space-y-2 pt-4 border-t border-border-custom font-mono text-xs text-text-secondary">
               <div className="flex justify-between">
                 <span>Mon – Thu:</span>
-                <span className="text-black font-semibold">12:00 PM – 10:00 PM</span>
+                <span className="text-text-primary font-semibold">12:00 PM – 10:00 PM</span>
               </div>
               <div className="flex justify-between">
                 <span>Fri – Sat:</span>
-                <span className="text-black font-semibold">12:00 PM – 11:30 PM</span>
+                <span className="text-text-primary font-semibold">12:00 PM – 11:30 PM</span>
               </div>
               <div className="flex justify-between">
                 <span>Sunday:</span>
-                <span className="text-black font-semibold">11:00 AM – 09:00 PM</span>
+                <span className="text-text-primary font-semibold">11:00 AM – 09:00 PM</span>
               </div>
             </div>
           </div>
 
           {/* Right Form */}
-          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-black/8 shadow-sm">
+          <div className="lg:col-span-7 bg-surface p-6 sm:p-8 rounded-2xl border border-border-custom shadow-sm">
             <AnimatePresence mode="wait">
               {bookingConfirmed ? (
                 <motion.div
@@ -523,18 +523,18 @@ export default function HomePage() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   className="text-center py-10 space-y-6"
                 >
-                  <div className="h-16 w-16 bg-green-50 border border-green-200 rounded-full flex items-center justify-center mx-auto text-veg">
+                  <div className="h-16 w-16 bg-veg/10 border border-veg/20 rounded-full flex items-center justify-center mx-auto text-veg">
                     <CheckCircle className="h-8 w-8" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="font-display italic text-2xl text-black">Booking Confirmed!</h3>
-                    <p className="text-xs text-[#555550] max-w-xs mx-auto font-sans font-light leading-relaxed">
-                      Your table reservation is secured. We sent updates to your contacts. Reference Code: <strong className="font-mono text-black">{bookingCode}</strong>
+                    <h3 className="font-display italic text-2xl text-text-primary">Booking Confirmed!</h3>
+                    <p className="text-xs text-text-secondary max-w-xs mx-auto font-sans font-light leading-relaxed">
+                      Your table reservation is secured. We sent updates to your contacts. Reference Code: <strong className="font-mono text-text-primary">{bookingCode}</strong>
                     </p>
                   </div>
                   <button
                     onClick={resetBookingForm}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-black text-black hover:bg-black hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors duration-200"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-primary text-text-primary hover:bg-primary hover:text-background text-xs font-semibold uppercase tracking-wider transition-colors duration-200 cursor-pointer min-h-[44px]"
                   >
                     Reserve Another Table
                   </button>
@@ -543,12 +543,12 @@ export default function HomePage() {
                 <motion.form key="form" onSubmit={handleFormSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Name */}
-                    <div className="relative border border-black/10 focus-within:border-black rounded-lg p-2 transition-colors">
+                    <div className="relative border border-border-custom focus-within:border-primary rounded-lg p-2 transition-colors bg-background">
                       <label
                         className={`absolute left-3 transition-all duration-200 font-sans tracking-wide text-xs ${
                           focusState.name || formData.name
-                            ? "top-1 text-[8px] text-[#8A8880] uppercase"
-                            : "top-4 text-xs text-[#8A8880]"
+                            ? "top-1 text-[8px] text-text-muted uppercase"
+                            : "top-4 text-xs text-text-muted"
                         }`}
                       >
                         Full Name *
@@ -560,18 +560,18 @@ export default function HomePage() {
                         onFocus={() => setFocusState((prev) => ({ ...prev, name: true }))}
                         onBlur={() => setFocusState((prev) => ({ ...prev, name: false }))}
                         onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
-                        className="w-full bg-transparent text-sm border-none outline-none pt-4 pb-1 text-black focus:ring-0"
+                        className="w-full bg-transparent text-sm border-none outline-none pt-4 pb-1 text-text-primary focus:ring-0"
                       />
                       {formErrors.name && <p className="text-[9px] text-red-500 mt-1 font-sans">{formErrors.name}</p>}
                     </div>
 
                     {/* Phone */}
-                    <div className="relative border border-black/10 focus-within:border-black rounded-lg p-2 transition-colors">
+                    <div className="relative border border-border-custom focus-within:border-primary rounded-lg p-2 transition-colors bg-background">
                       <label
                         className={`absolute left-3 transition-all duration-200 font-sans tracking-wide text-xs ${
                           focusState.phone || formData.phone
-                            ? "top-1 text-[8px] text-[#8A8880] uppercase"
-                            : "top-4 text-xs text-[#8A8880]"
+                            ? "top-1 text-[8px] text-text-muted uppercase"
+                            : "top-4 text-xs text-text-muted"
                         }`}
                       >
                         Phone Number *
@@ -583,31 +583,31 @@ export default function HomePage() {
                         onFocus={() => setFocusState((prev) => ({ ...prev, phone: true }))}
                         onBlur={() => setFocusState((prev) => ({ ...prev, phone: false }))}
                         onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
-                        className="w-full bg-transparent text-sm border-none outline-none pt-4 pb-1 text-black focus:ring-0"
+                        className="w-full bg-transparent text-sm border-none outline-none pt-4 pb-1 text-text-primary focus:ring-0"
                       />
                       {formErrors.phone && <p className="text-[9px] text-red-500 mt-1 font-sans">{formErrors.phone}</p>}
                     </div>
 
                     {/* Date */}
-                    <div className="relative border border-black/10 rounded-lg p-2">
-                      <label className="text-[8px] text-[#8A8880] uppercase tracking-wide block">Booking Date *</label>
+                    <div className="relative border border-border-custom rounded-lg p-2 bg-background">
+                      <label className="text-[8px] text-text-muted uppercase tracking-wide block">Booking Date *</label>
                       <input
                         type="date"
                         value={formData.date}
                         min={new Date().toISOString().split("T")[0]}
                         onChange={(e) => setFormData((prev) => ({ ...prev, date: e.target.value }))}
-                        className="w-full bg-transparent text-sm border-none outline-none pt-1 pb-1 text-black focus:ring-0"
+                        className="w-full bg-transparent text-sm border-none outline-none pt-1 pb-1 text-text-primary focus:ring-0 cursor-pointer"
                       />
                       {formErrors.date && <p className="text-[9px] text-red-500 mt-1 font-sans">{formErrors.date}</p>}
                     </div>
 
                     {/* Time slots */}
-                    <div className="relative border border-black/10 rounded-lg p-2">
-                      <label className="text-[8px] text-[#8A8880] uppercase tracking-wide block">Time Slot *</label>
+                    <div className="relative border border-border-custom rounded-lg p-2 bg-background">
+                      <label className="text-[8px] text-text-muted uppercase tracking-wide block">Time Slot *</label>
                       <select
                         value={formData.time}
                         onChange={(e) => setFormData((prev) => ({ ...prev, time: e.target.value }))}
-                        className="w-full bg-transparent text-sm border-none outline-none pt-1 pb-1 text-black focus:ring-0 cursor-pointer"
+                        className="w-full bg-transparent text-sm border-none outline-none pt-1 pb-1 text-text-primary focus:ring-0 cursor-pointer"
                       >
                         <option value="">Select Time</option>
                         {timeSlots.map((slot) => (
@@ -621,12 +621,12 @@ export default function HomePage() {
                   </div>
 
                   {/* Special Requests */}
-                  <div className="relative border border-black/10 focus-within:border-black rounded-lg p-2 transition-colors">
+                  <div className="relative border border-border-custom focus-within:border-primary rounded-lg p-2 transition-colors bg-background">
                     <label
                       className={`absolute left-3 transition-all duration-200 font-sans tracking-wide text-xs ${
                         focusState.requests || formData.requests
-                          ? "top-1 text-[8px] text-[#8A8880] uppercase"
-                          : "top-4 text-xs text-[#8A8880]"
+                          ? "top-1 text-[8px] text-text-muted uppercase"
+                          : "top-4 text-xs text-text-muted"
                       }`}
                     >
                       Special Requests (Allergies, Kids, Occasion)
@@ -638,7 +638,7 @@ export default function HomePage() {
                       onBlur={() => setFocusState((prev) => ({ ...prev, requests: false }))}
                       onChange={(e) => setFormData((prev) => ({ ...prev, requests: e.target.value }))}
                       rows={2}
-                      className="w-full bg-transparent text-sm border-none outline-none pt-4 pb-1 text-black focus:ring-0 resize-none"
+                      className="w-full bg-transparent text-sm border-none outline-none pt-4 pb-1 text-text-primary focus:ring-0 resize-none"
                     />
                   </div>
 
@@ -646,7 +646,7 @@ export default function HomePage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-black hover:bg-[#111111] text-white font-semibold uppercase tracking-widest text-xs transition-colors duration-200 disabled:opacity-50 min-h-[48px]"
+                    className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-primary hover:bg-primary-light text-background font-semibold uppercase tracking-widest text-xs transition-colors duration-200 disabled:opacity-50 min-h-[48px] cursor-pointer"
                   >
                     {isSubmitting ? "Placing Table Reservation..." : "Confirm Table Reservation"}
                   </button>
@@ -658,10 +658,10 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 6: ABOUT / CHEF'S STORY */}
-      <section className="py-20 sm:py-24 bg-white relative z-10">
+      <section className="py-20 sm:py-24 bg-background relative z-10">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Chef Image left with subtle vignette edges */}
-          <div className="lg:col-span-5 relative h-[380px] sm:h-[480px] w-full rounded-2xl overflow-hidden border border-black/8 shadow-sm">
+          <div className="lg:col-span-5 relative h-[380px] sm:h-[480px] w-full rounded-2xl overflow-hidden border border-border-custom shadow-sm bg-surface">
             <Image
               src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=600&auto=format&fit=crop"
               alt="Executive Kitchen Master Chef plating pasta"
@@ -670,37 +670,37 @@ export default function HomePage() {
               className="object-cover grayscale hover:grayscale-0 transition-[filter] duration-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
           </div>
 
           {/* Text Right */}
           <div className="lg:col-span-7 space-y-6 text-left pl-0 lg:pl-6">
-            <span className="text-[10px] tracking-[0.18em] font-sans text-[#8A8880] uppercase block">OUR STORY</span>
-            <h2 className="font-display italic text-4xl sm:text-5xl text-black font-light leading-none">The Chef&apos;s Sanctuary</h2>
-            <p className="text-xs sm:text-sm text-[#555550] leading-relaxed font-light font-sans">
+            <span className="text-[10px] tracking-[0.18em] font-sans text-text-muted uppercase block">OUR STORY</span>
+            <h2 className="font-display italic text-4xl sm:text-5xl text-text-primary font-light leading-none">The Chef&apos;s Sanctuary</h2>
+            <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light font-sans">
               Plates are maps, and fires are voices. We believe in preparing dishes that satisfy your hunger before they ever reach the table. We curate five distinct hearths under one single roof, employing authentic clay ovens for flatbreads and steel woks for glazing Momos and noodles.
             </p>
-            <p className="text-xs sm:text-sm text-[#555550] leading-relaxed font-light font-sans">
+            <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light font-sans">
               Our master culinary architects ground the dry spices daily and monitor live baking hearths. This is the sensory fine dining arrival we built in Kalasiguda, Secunderabad.
             </p>
 
-            <div className="italic font-display text-lg text-black pt-2">
+            <div className="italic font-display text-lg text-text-primary pt-2">
               — Chef&apos;s Executive Kitchen
             </div>
 
             {/* Counters row */}
-            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-black/8 text-left font-sans">
+            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border-custom text-left font-sans">
               <div>
-                <h4 className="font-display italic text-3xl sm:text-4xl text-black">8+</h4>
-                <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-[#8A8880] uppercase mt-1">Years Open</p>
+                <h4 className="font-display italic text-3xl sm:text-4xl text-text-primary">8+</h4>
+                <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-text-muted uppercase mt-1">Years Open</p>
               </div>
               <div>
-                <h4 className="font-display italic text-3xl sm:text-4xl text-black">120+</h4>
-                <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-[#8A8880] uppercase mt-1">Delicacies</p>
+                <h4 className="font-display italic text-3xl sm:text-4xl text-text-primary">120+</h4>
+                <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-text-muted uppercase mt-1">Delicacies</p>
               </div>
               <div>
-                <h4 className="font-display italic text-3xl sm:text-4xl text-black">4.9</h4>
-                <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-[#8A8880] uppercase mt-1">Rating</p>
+                <h4 className="font-display italic text-3xl sm:text-4xl text-text-primary">4.9</h4>
+                <p className="text-[9px] sm:text-[10px] font-sans tracking-[0.12em] text-text-muted uppercase mt-1">Rating</p>
               </div>
             </div>
           </div>
@@ -708,18 +708,18 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 7: GALLERY (Masonry Grid with Hover Tilt) */}
-      <section className="py-16 sm:py-20 bg-[#FAF9F5] border-y border-border-custom relative z-10">
+      <section className="py-16 sm:py-20 bg-surface border-y border-border-custom relative z-10">
         <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
           <div className="max-w-xl mx-auto space-y-1 mb-12 sm:mb-16">
-            <span className="text-[10px] tracking-[0.18em] font-sans text-[#8A8880] uppercase block">VISUAL POETRY</span>
-            <h2 className="font-display italic text-3xl sm:text-4xl text-black font-light leading-none">The Sensory Gallery</h2>
+            <span className="text-[10px] tracking-[0.18em] font-sans text-text-muted uppercase block">VISUAL POETRY</span>
+            <h2 className="font-display italic text-3xl sm:text-4xl text-text-primary font-light leading-none">The Sensory Gallery</h2>
           </div>
 
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
             {galleryImages.map((img, idx) => (
               <div
                 key={idx}
-                className="relative overflow-hidden rounded-xl border border-black/8 bg-white cursor-pointer select-none"
+                className="relative overflow-hidden rounded-xl border border-border-custom bg-surface-2 cursor-pointer select-none"
                 style={{
                   transform: tiltStyle[idx] || "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
                   transition: "transform 0.15s ease-out"
@@ -745,39 +745,39 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 8: REVIEWS */}
-      <section className="py-20 sm:py-24 bg-white relative z-10">
+      <section className="py-20 sm:py-24 bg-background relative z-10">
         <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
           <div className="max-w-xl mx-auto space-y-1 mb-12 sm:mb-16">
-            <span className="text-[10px] tracking-[0.18em] font-sans text-[#8A8880] uppercase block">GUEST SENTIMENT</span>
-            <h2 className="font-display italic text-3xl sm:text-4xl text-black font-light leading-none">Whispers of Praise</h2>
+            <span className="text-[10px] tracking-[0.18em] font-sans text-text-muted uppercase block">GUEST SENTIMENT</span>
+            <h2 className="font-display italic text-3xl sm:text-4xl text-text-primary font-light leading-none">Whispers of Praise</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             {reviews.map((rev, idx) => (
               <div
                 key={idx}
-                className="bg-[#FAF9F5] p-8 rounded-2xl border border-black/6 flex flex-col justify-between space-y-6 hover:border-black/20 transition-all duration-300"
+                className="bg-surface p-8 rounded-2xl border border-border-custom flex flex-col justify-between space-y-6 hover:border-primary/20 transition-all duration-300"
               >
                 <div className="space-y-4 relative">
                   {/* Pull Quote Large mark */}
-                  <span className="absolute -top-6 -left-3 font-display italic text-6xl text-black/10 select-none">
+                  <span className="absolute -top-6 -left-3 font-display italic text-6xl text-primary/10 select-none">
                     &ldquo;
                   </span>
-                  <div className="flex gap-1 text-black">
+                  <div className="flex gap-1 text-text-primary">
                     {[...Array(rev.rating)].map((_, i) => (
                       <Star key={i} className="h-3.5 w-3.5 fill-current" />
                     ))}
                   </div>
-                  <p className="font-display italic text-lg sm:text-xl text-[#111111] leading-relaxed relative z-10 pt-2">
+                  <p className="font-display italic text-lg sm:text-xl text-text-primary leading-relaxed relative z-10 pt-2">
                     {rev.quote}
                   </p>
                 </div>
-                <div className="pt-4 border-t border-black/8 flex items-center justify-between">
+                <div className="pt-4 border-t border-border-custom flex items-center justify-between">
                   <div>
-                    <h4 className="text-xs font-semibold text-black uppercase tracking-wider">{rev.name}</h4>
-                    <p className="text-[10px] text-[#8A8880] mt-0.5">{rev.role}</p>
+                    <h4 className="text-xs font-semibold text-text-primary uppercase tracking-wider">{rev.name}</h4>
+                    <p className="text-[10px] text-text-muted mt-0.5">{rev.role}</p>
                   </div>
-                  <span className="text-[9px] font-mono text-[#8A8880] uppercase tracking-wider">
+                  <span className="text-[9px] font-mono text-text-muted uppercase tracking-wider">
                     {rev.source}
                   </span>
                 </div>
@@ -802,33 +802,33 @@ export default function HomePage() {
               initial={{ opacity: 0, scale: 0.95, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 24 }}
-              className="relative w-full max-w-xl overflow-hidden rounded-2xl border border-black/10 bg-white shadow-2xl z-10"
+              className="relative w-full max-w-xl overflow-hidden rounded-2xl border border-border-custom bg-surface shadow-2xl z-10"
             >
               {/* Modal Banner */}
-              <div className="relative h-64 w-full overflow-hidden bg-[#FAF9F5]">
+              <div className="relative h-64 w-full overflow-hidden bg-surface-2">
                 <img src={selectedDish.image} alt={selectedDish.name} className="h-full w-full object-cover" />
                 <button
                   onClick={() => setSelectedDish(null)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white text-black transition-colors"
+                  className="absolute top-4 right-4 p-2 rounded-full bg-background/80 hover:bg-background text-text-primary transition-colors cursor-pointer"
                 >
                   <X className="h-4 w-4" />
                 </button>
               </div>
 
               {/* Modal Body */}
-              <div className="p-6 sm:p-8 space-y-4">
+              <div className="p-6 sm:p-8 space-y-4 text-left">
                 <div className="space-y-1">
-                  <span className="text-[9px] font-mono text-[#8A8880] uppercase tracking-widest">{selectedDish.course}</span>
-                  <h3 className="font-display italic text-3xl text-black leading-tight">{selectedDish.name}</h3>
+                  <span className="text-[9px] font-mono text-text-muted uppercase tracking-widest">{selectedDish.course}</span>
+                  <h3 className="font-display italic text-3xl text-text-primary leading-tight">{selectedDish.name}</h3>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#555550] leading-relaxed font-sans font-light">
+                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-sans font-light">
                   {selectedDish.description}
                 </p>
 
-                <div className="flex items-center justify-between pt-4 border-t border-black/8">
-                  <div className="flex items-baseline font-mono text-black">
-                    <span className="text-xs text-[#8A8880] mr-1">₹</span>
+                <div className="flex items-center justify-between pt-4 border-t border-border-custom">
+                  <div className="flex items-baseline font-mono text-text-primary">
+                    <span className="text-xs text-text-muted mr-1">₹</span>
                     <span className="text-xl font-bold">{selectedDish.price}</span>
                   </div>
 
@@ -843,7 +843,7 @@ export default function HomePage() {
                       setSelectedDish(null);
                       showToast(`Added ${selectedDish.name} to order`, "success");
                     }}
-                    className="px-6 py-3 rounded-full bg-black hover:bg-[#111111] text-white text-xs font-semibold uppercase tracking-widest transition-colors duration-200"
+                    className="px-6 py-3 rounded-full bg-primary hover:bg-primary-light text-background text-xs font-semibold uppercase tracking-widest transition-colors duration-200 cursor-pointer"
                   >
                     Add to Order
                   </button>

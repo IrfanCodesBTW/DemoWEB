@@ -164,15 +164,15 @@ function MenuContent() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black pb-24">
+    <div className="min-h-screen bg-background text-text-primary pb-24">
       {/* Page Header */}
-      <div className="relative pt-28 sm:pt-36 pb-10 overflow-hidden bg-[#FAF9F5] border-b border-black/8">
+      <div className="relative pt-28 sm:pt-36 pb-10 overflow-hidden bg-surface border-b border-border-custom">
         <div className="max-w-7xl mx-auto px-4 md:px-8 text-center space-y-3 relative z-10">
-          <span className="text-[10px] tracking-[0.25em] font-mono text-[#8A8880] uppercase block">Savoury Collections</span>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-light italic text-black leading-none">
+          <span className="text-[10px] tracking-[0.25em] font-mono text-text-muted uppercase block">Savoury Collections</span>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-light italic text-text-primary leading-none">
             The Culinary Library
           </h1>
-          <p className="text-xs sm:text-sm text-[#555550] max-w-lg mx-auto leading-relaxed font-sans font-light">
+          <p className="text-xs sm:text-sm text-text-secondary max-w-lg mx-auto leading-relaxed font-sans font-light">
             An editorial registry of clay-oven delicacies, fiery Chinese plates, traditional ghee dosas, and custom cold brews.
           </p>
         </div>
@@ -180,7 +180,7 @@ function MenuContent() {
 
       {/* Sticky Tab Category Bar (below header) */}
       {activeCategories.length > 0 && (
-        <div className="sticky top-[64px] z-30 bg-white/94 backdrop-blur-xl border-b border-black/8 py-2.5">
+        <div className="sticky top-[64px] z-30 bg-background/94 backdrop-blur-xl border-b border-border-custom py-2.5">
           <div className="max-w-7xl mx-auto px-4 md:px-8 flex gap-2 overflow-x-auto scrollbar-none scroll-smooth">
             {activeCategories.map((catName) => {
               const isActive = activeCategory === catName;
@@ -189,7 +189,7 @@ function MenuContent() {
                   key={catName}
                   onClick={() => scrollToSection(catName)}
                   className={`px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider uppercase shrink-0 transition-all duration-300 relative cursor-pointer min-h-[36px] ${
-                    isActive ? "text-white bg-black" : "text-[#555550] hover:text-black bg-black/3"
+                    isActive ? "text-background bg-primary" : "text-text-secondary hover:text-text-primary bg-surface-2 hover:bg-surface-3"
                   }`}
                 >
                   {catName}
@@ -202,24 +202,24 @@ function MenuContent() {
 
       {/* Main filters container */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 mt-10">
-        <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF9F5] border border-black/8 shadow-sm space-y-4 mb-8">
+        <div className="p-4 sm:p-5 rounded-2xl bg-surface border border-border-custom shadow-sm space-y-4 mb-8">
           <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
             {/* Search Input Box */}
-            <div className="relative w-full lg:max-w-md focus-within:ring-2 focus-within:ring-black rounded-xl overflow-hidden border border-black/10">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#8A8880]" />
+            <div className="relative w-full lg:max-w-md focus-within:ring-2 focus-within:ring-primary rounded-xl overflow-hidden border border-border-custom">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-text-muted" />
               <input
                 type="text"
                 placeholder="Search starters, biryani, dosas..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-white text-sm text-black placeholder:text-[#8A8880] focus:outline-none"
+                className="w-full pl-10 pr-4 py-2.5 bg-background text-sm text-text-primary placeholder:text-text-muted focus:outline-none"
                 id="menu-search"
                 aria-label="Search menu items"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-mono text-[#8A8880] hover:text-black cursor-pointer"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-mono text-text-muted hover:text-text-primary cursor-pointer"
                 >
                   Clear
                 </button>
@@ -229,13 +229,13 @@ function MenuContent() {
             {/* Selection Toggles */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full lg:w-auto justify-end">
               {/* Veg Toggle Buttons */}
-              <div className="flex rounded-xl border border-black/8 p-0.5 bg-white shrink-0">
+              <div className="flex rounded-xl border border-border-custom p-0.5 bg-background shrink-0">
                 <button
                   onClick={() => setVegOnly(vegOnly === true ? null : true)}
                   className={`px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors duration-200 cursor-pointer min-h-[34px] ${
                     vegOnly === true
-                      ? "bg-green-50 text-veg border border-green-200"
-                      : "text-[#555550] hover:text-black"
+                      ? "bg-veg/10 text-veg border border-veg/20"
+                      : "text-text-secondary hover:text-text-primary"
                   }`}
                 >
                   Veg Only
@@ -244,8 +244,8 @@ function MenuContent() {
                   onClick={() => setVegOnly(vegOnly === false ? null : false)}
                   className={`px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors duration-200 cursor-pointer min-h-[34px] ${
                     vegOnly === false
-                      ? "bg-red-50 text-nonveg border border-red-200"
-                      : "text-[#555550] hover:text-black"
+                      ? "bg-nonveg/10 text-nonveg border border-nonveg/20"
+                      : "text-text-secondary hover:text-text-primary"
                   }`}
                 >
                   Non-Veg Only
@@ -253,12 +253,12 @@ function MenuContent() {
               </div>
 
               {/* Sorting */}
-              <div className="relative flex items-center gap-1.5 px-3 py-2 rounded-xl border border-black/8 bg-white shrink-0 text-xs">
-                <ArrowUpDown className="h-3.5 w-3.5 text-black" />
+              <div className="relative flex items-center gap-1.5 px-3 py-2 rounded-xl border border-border-custom bg-background shrink-0 text-xs">
+                <ArrowUpDown className="h-3.5 w-3.5 text-text-primary" />
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as "name" | "price-asc" | "price-desc")}
-                  className="bg-transparent text-black font-semibold uppercase tracking-wider focus:outline-none cursor-pointer min-h-[28px]"
+                  className="bg-transparent text-text-primary font-semibold uppercase tracking-wider focus:outline-none cursor-pointer min-h-[28px]"
                   aria-label="Sort menu items"
                 >
                   <option value="name">Sort: A-Z</option>
@@ -270,7 +270,7 @@ function MenuContent() {
               {/* Reset Filter Button */}
               <button
                 onClick={handleResetFilters}
-                className="p-2 rounded-xl border border-black/8 hover:border-black text-[#555550] hover:bg-black/3 transition-colors duration-200 cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
+                className="p-2 rounded-xl border border-border-custom hover:border-primary text-text-secondary hover:bg-primary/5 transition-colors duration-200 cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
                 title="Reset All Filters"
                 aria-label="Reset all filters"
               >
@@ -280,7 +280,7 @@ function MenuContent() {
           </div>
 
           {/* Cuisine selection strip */}
-          <div className="space-y-1.5 border-t border-black/5 pt-3">
+          <div className="space-y-1.5 border-t border-border-custom pt-3">
             <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none scroll-smooth">
               {CUISINES.map((c) => {
                 const isActive = selectedCuisine === c;
@@ -292,8 +292,8 @@ function MenuContent() {
                     }}
                     className={`px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider uppercase shrink-0 transition-colors duration-200 cursor-pointer min-h-[36px] ${
                       isActive
-                        ? "bg-black text-white"
-                        : "border border-black/8 hover:border-black/25 text-[#555550] hover:text-black bg-white"
+                        ? "bg-primary text-background"
+                        : "border border-border-custom hover:border-primary/25 text-text-secondary hover:text-text-primary bg-surface"
                     }`}
                   >
                     {c}
@@ -305,10 +305,10 @@ function MenuContent() {
         </div>
 
         {/* Results Counter */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[#8A8880] font-mono mb-6 uppercase tracking-wider gap-2">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-text-muted font-mono mb-6 uppercase tracking-wider gap-2">
           <span>Found {filteredItems.length} culinary masterpieces</span>
           {vegOnly !== null && (
-            <span className="flex items-center gap-1 text-black bg-black/3 px-3 py-1 rounded-full border border-black/8">
+            <span className="flex items-center gap-1 text-text-primary bg-primary/10 px-3 py-1 rounded-full border border-border-custom">
               <Sparkles className="h-3.5 w-3.5" />
               {vegOnly ? "Vegetarian Only" : "Non-Vegetarian Only"} active
             </span>
@@ -317,14 +317,14 @@ function MenuContent() {
 
         {/* Row List grouped by category */}
         {filteredItems.length === 0 ? (
-          <div className="text-center py-20 rounded-2xl border border-black/6 bg-[#FAF9F5]">
-            <h3 className="font-display italic text-lg text-black font-semibold">No Masterpieces Found</h3>
-            <p className="text-xs text-[#555550] mt-1 max-w-[280px] mx-auto leading-relaxed font-sans font-light">
+          <div className="text-center py-20 rounded-2xl border border-border-custom bg-surface">
+            <h3 className="font-display italic text-lg text-text-primary font-semibold">No Masterpieces Found</h3>
+            <p className="text-xs text-text-secondary mt-1 max-w-[280px] mx-auto leading-relaxed font-sans font-light">
               We couldn&apos;t match that in our registry. Select a suggestion or clear search inputs.
             </p>
             <button
               onClick={handleResetFilters}
-              className="mt-5 px-6 py-2.5 rounded-full border border-black text-black text-xs font-semibold uppercase tracking-wider hover:bg-black hover:text-white transition-colors duration-200 cursor-pointer min-h-[44px]"
+              className="mt-5 px-6 py-2.5 rounded-full border border-primary text-text-primary text-xs font-semibold uppercase tracking-wider hover:bg-primary hover:text-background transition-colors duration-200 cursor-pointer min-h-[44px]"
             >
               Reset All Filters
             </button>
@@ -337,35 +337,35 @@ function MenuContent() {
                 <div key={catName} id={catName} className="menu-category-section space-y-4 scroll-mt-24">
                   {/* Category Header with centered thin lines */}
                   <div className="flex items-center justify-center gap-4 my-8">
-                    <div className="h-[1px] bg-black/8 flex-1" />
-                    <span className="text-[10px] tracking-[0.25em] font-mono text-[#8A8880] uppercase">
+                    <div className="h-[1px] bg-border-custom flex-1" />
+                    <span className="text-[10px] tracking-[0.25em] font-mono text-text-muted uppercase">
                       — {catName} —
                     </span>
-                    <div className="h-[1px] bg-black/8 flex-1" />
+                    <div className="h-[1px] bg-border-custom flex-1" />
                   </div>
 
                   {/* Category Row Items */}
-                  <div className="divide-y divide-black/6 bg-[#FAF9F5] border border-black/8 rounded-2xl overflow-hidden">
+                  <div className="divide-y divide-border-custom bg-surface border border-border-custom rounded-2xl overflow-hidden">
                     {categoryItems.map((item) => (
                       <div
                         key={item.name}
                         onClick={() => setSelectedDish(item)}
-                        className="flex items-center justify-between p-4 sm:p-5 hover:bg-[#F4F2EC] transition-colors duration-200 cursor-pointer group"
+                        className="flex items-center justify-between p-4 sm:p-5 hover:bg-surface-3 transition-colors duration-200 cursor-pointer group"
                       >
                         <div className="flex-1 pr-6 space-y-1 text-left">
                           <div className="flex items-center gap-2">
                             <span className={`w-2 h-2 rounded-full shrink-0 ${item.isVeg ? "bg-veg" : "bg-nonveg"}`} />
-                            <h4 className="font-display italic text-base sm:text-lg text-black group-hover:text-black font-semibold">
+                            <h4 className="font-display italic text-base sm:text-lg text-text-primary group-hover:text-text-primary font-semibold">
                               {item.name}
                             </h4>
                             {item.isSpicy && (
-                              <span className="text-[8px] font-sans bg-red-50 border border-red-200 text-nonveg px-2 py-0.5 rounded-full uppercase font-bold shrink-0">
+                              <span className="text-[8px] font-sans bg-nonveg/10 border border-nonveg/20 text-nonveg px-2 py-0.5 rounded-full uppercase font-bold shrink-0">
                                 🌶 SPICY
                               </span>
                             )}
                           </div>
                           {item.description && (
-                            <p className="text-xs text-[#555550] leading-relaxed font-sans font-light max-w-2xl line-clamp-1 group-hover:line-clamp-none transition-all duration-300">
+                            <p className="text-xs text-text-secondary leading-relaxed font-sans font-light max-w-2xl line-clamp-1 group-hover:line-clamp-none transition-all duration-300">
                               {item.description}
                             </p>
                           )}
@@ -373,11 +373,11 @@ function MenuContent() {
 
                         {/* Right elements: price and arrow indicator */}
                         <div className="flex items-center gap-4 shrink-0">
-                          <div className="flex items-baseline font-mono text-black font-bold text-sm sm:text-base">
-                            <span className="text-[10px] text-[#8A8880] mr-0.5">₹</span>
+                          <div className="flex items-baseline font-mono text-text-primary font-bold text-sm sm:text-base">
+                            <span className="text-[10px] text-text-muted mr-0.5">₹</span>
                             <span>{item.price}</span>
                           </div>
-                          <ChevronRight className="h-4 w-4 text-[#8A8880] group-hover:text-black transform translate-x-0 group-hover:translate-x-1 transition-all" />
+                          <ChevronRight className="h-4 w-4 text-text-muted group-hover:text-text-primary transform translate-x-0 group-hover:translate-x-1 transition-all" />
                         </div>
                       </div>
                     ))}
@@ -404,10 +404,10 @@ function MenuContent() {
               initial={{ opacity: 0, scale: 0.95, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 24 }}
-              className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-black/10 bg-white shadow-2xl z-10"
+              className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-border-custom bg-surface shadow-2xl z-10"
             >
               {/* Modal Banner */}
-              <div className="relative h-64 w-full overflow-hidden bg-[#FAF9F5]">
+              <div className="relative h-64 w-full overflow-hidden bg-surface-2">
                 <img
                   src={getSearchFoodImage(selectedDish.name, selectedDish.categoryName)}
                   alt={selectedDish.name}
@@ -415,7 +415,7 @@ function MenuContent() {
                 />
                 <button
                   onClick={() => setSelectedDish(null)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white text-black transition-colors"
+                  className="absolute top-4 right-4 p-2 rounded-full bg-background/80 hover:bg-background text-text-primary transition-colors cursor-pointer"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -424,12 +424,12 @@ function MenuContent() {
               {/* Modal Body */}
               <div className="p-6 sm:p-8 space-y-4 text-left">
                 <div className="space-y-1">
-                  <span className="text-[9px] font-mono text-[#8A8880] uppercase tracking-widest">{selectedDish.categoryName}</span>
-                  <h3 className="font-display italic text-3xl text-black leading-tight">{selectedDish.name}</h3>
+                  <span className="text-[9px] font-mono text-text-muted uppercase tracking-widest">{selectedDish.categoryName}</span>
+                  <h3 className="font-display italic text-3xl text-text-primary leading-tight">{selectedDish.name}</h3>
                 </div>
 
                 {selectedDish.description && (
-                  <p className="text-xs sm:text-sm text-[#555550] leading-relaxed font-sans font-light">
+                  <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-sans font-light">
                     {selectedDish.description}
                   </p>
                 )}
@@ -438,22 +438,22 @@ function MenuContent() {
                   <span
                     className={`text-[8px] font-sans tracking-wider font-bold uppercase px-2.5 py-1 rounded-full border ${
                       selectedDish.isVeg
-                        ? "bg-green-50 border-green-200 text-veg"
-                        : "bg-red-50 border-red-200 text-nonveg"
+                        ? "bg-veg/10 border-veg/20 text-veg"
+                        : "bg-nonveg/10 border-nonveg/20 text-nonveg"
                     }`}
                   >
                     {selectedDish.isVeg ? "VEGETARIAN" : "NON-VEGETARIAN"}
                   </span>
                   {selectedDish.isSpicy && (
-                    <span className="text-[8px] font-sans tracking-wider font-bold uppercase px-2.5 py-1 rounded-full border bg-red-50 border-red-200 text-nonveg">
+                    <span className="text-[8px] font-sans tracking-wider font-bold uppercase px-2.5 py-1 rounded-full border bg-nonveg/10 border border-nonveg/20 text-nonveg">
                       🌶 SPICY DISH
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-black/8">
-                  <div className="flex items-baseline font-mono text-black">
-                    <span className="text-xs text-[#8A8880] mr-1">₹</span>
+                <div className="flex items-center justify-between pt-4 border-t border-border-custom">
+                  <div className="flex items-baseline font-mono text-text-primary">
+                    <span className="text-xs text-text-muted mr-1">₹</span>
                     <span className="text-xl font-bold">{selectedDish.price}</span>
                   </div>
 
@@ -463,7 +463,7 @@ function MenuContent() {
                       setSelectedDish(null);
                       showToast(`Added ${selectedDish.name} to order`, "success");
                     }}
-                    className="px-6 py-3 rounded-full bg-black hover:bg-[#111111] text-white text-xs font-semibold uppercase tracking-widest transition-colors duration-200"
+                    className="px-6 py-3 rounded-full bg-primary hover:bg-primary-light text-background text-xs font-semibold uppercase tracking-widest transition-colors duration-200 cursor-pointer"
                   >
                     Add to Order
                   </button>
@@ -483,11 +483,11 @@ export default function MenuPage() {
       <Navbar />
       <Suspense
         fallback={
-          <div className="min-h-screen bg-white flex flex-col items-center justify-center">
-            <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-black/10">
-              <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-black" />
+          <div className="min-h-screen bg-background flex flex-col items-center justify-center">
+            <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-border-custom">
+              <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary" />
             </div>
-            <p className="text-xs text-[#8A8880] mt-4 font-mono uppercase tracking-widest">
+            <p className="text-xs text-text-muted mt-4 font-mono uppercase tracking-widest">
               Loading culinary vault...
             </p>
           </div>

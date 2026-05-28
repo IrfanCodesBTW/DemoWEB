@@ -47,8 +47,8 @@ export const Footer: React.FC = () => {
         {/* Info Column */}
         <div className="space-y-4">
           <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-surface-2 border border-black/10">
-              <UtensilsCrossed className="h-5 w-5 text-black" />
+            <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-surface-2 border border-border-custom">
+              <UtensilsCrossed className="h-5 w-5 text-text-primary" />
             </div>
             <div className="flex flex-col">
               <span className="font-display text-lg font-bold tracking-wider text-text-primary">CAFE</span>
@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full border border-black/8 hover:border-black/25 flex items-center justify-center text-text-muted hover:text-black transition-colors duration-200 focus-visible-ring cursor-pointer"
+                className="h-10 w-10 rounded-full border border-border-custom hover:border-primary/20 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors duration-200 focus-visible-ring cursor-pointer"
                 aria-label={`Visit our ${social.name} page`}
               >
                 {social.svg}
@@ -78,30 +78,30 @@ export const Footer: React.FC = () => {
 
         {/* Quick Links */}
         <div className="space-y-4">
-          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-black">Explore</h3>
+          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-text-primary">Explore</h3>
           <ul className="space-y-2.5 text-xs text-text-secondary">
             <li>
-              <Link href="/" className="hover:text-black transition-colors duration-200 focus-visible-ring cursor-pointer py-1 inline-block">
+              <Link href="/" className="hover:text-primary transition-colors duration-200 focus-visible-ring cursor-pointer py-1 inline-block">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/menu" className="hover:text-black transition-colors duration-200 focus-visible-ring cursor-pointer py-1 inline-block">
+              <Link href="/menu" className="hover:text-primary transition-colors duration-200 focus-visible-ring cursor-pointer py-1 inline-block">
                 Menu
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-black transition-colors duration-200 focus-visible-ring cursor-pointer py-1 inline-block">
+              <Link href="/about" className="hover:text-primary transition-colors duration-200 focus-visible-ring cursor-pointer py-1 inline-block">
                 About Us
               </Link>
             </li>
             <li>
-              <Link href="/reservations" className="hover:text-black transition-colors duration-200 focus-visible-ring cursor-pointer py-1 inline-block">
+              <Link href="/reservations" className="hover:text-primary transition-colors duration-200 focus-visible-ring cursor-pointer py-1 inline-block">
                 Book a Table
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-black transition-colors duration-200 focus-visible-ring cursor-pointer py-1 inline-block">
+              <Link href="/contact" className="hover:text-primary transition-colors duration-200 focus-visible-ring cursor-pointer py-1 inline-block">
                 Contact & Find Us
               </Link>
             </li>
@@ -110,17 +110,17 @@ export const Footer: React.FC = () => {
 
         {/* Timings */}
         <div className="space-y-4">
-          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-black">Dining Hours</h3>
+          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-text-primary">Dining Hours</h3>
           <ul className="space-y-3 text-xs text-text-secondary">
             <li className="flex items-start gap-2.5">
-              <Clock className="h-4 w-4 text-black shrink-0 mt-0.5" />
+              <Clock className="h-4 w-4 text-primary shrink-0 mt-0.5" />
               <div>
                 <p className="font-semibold text-text-primary">Breakfast (South Indian)</p>
                 <p className="text-text-muted mt-0.5">07:30 AM – 10:30 AM</p>
               </div>
             </li>
             <li className="flex items-start gap-2.5">
-              <Clock className="h-4 w-4 text-black shrink-0 mt-0.5" />
+              <Clock className="h-4 w-4 text-primary shrink-0 mt-0.5" />
               <div>
                 <p className="font-semibold text-text-primary">All-Day Dining</p>
                 <p className="text-text-muted mt-0.5">07:00 AM – 11:00 PM</p>
@@ -131,23 +131,23 @@ export const Footer: React.FC = () => {
 
         {/* Contact Info */}
         <div className="space-y-4">
-          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-black">Get In Touch</h3>
+          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-text-primary">Get In Touch</h3>
           <ul className="space-y-3 text-xs text-text-secondary">
             <li className="flex gap-2.5">
-              <MapPin className="h-4 w-4 text-black shrink-0 mt-0.5" />
+              <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
               <span className="leading-relaxed">
                 1-2-40, 41 & 43, Park Ln, Kalasiguda, Secunderabad, Telangana 500003
               </span>
             </li>
             <li className="flex gap-2.5 items-center">
-              <Phone className="h-4 w-4 text-black shrink-0" />
-              <a href="tel:+914012345678" className="hover:text-black transition-colors duration-200 focus-visible-ring cursor-pointer">
+              <Phone className="h-4 w-4 text-primary shrink-0" />
+              <a href="tel:+914012345678" className="hover:text-primary transition-colors duration-200 focus-visible-ring cursor-pointer">
                 +91 40 1234 5678
               </a>
             </li>
             <li className="flex gap-2.5 items-center">
-              <Mail className="h-4 w-4 text-black shrink-0" />
-              <a href="mailto:info@cafemulticuisine.com" className="hover:text-black transition-colors duration-200 focus-visible-ring cursor-pointer">
+              <Mail className="h-4 w-4 text-primary shrink-0" />
+              <a href="mailto:info@cafemulticuisine.com" className="hover:text-primary transition-colors duration-200 focus-visible-ring cursor-pointer">
                 info@cafemulticuisine.com
               </a>
             </li>

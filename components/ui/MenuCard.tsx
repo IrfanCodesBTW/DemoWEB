@@ -74,7 +74,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, categoryName }) => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.97 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className="glass-card overflow-hidden rounded-2xl flex flex-col h-full border border-black/8 hover:border-black/20 focus-within:ring-2 focus-within:ring-black focus-within:ring-offset-2 focus-within:ring-offset-white"
+        className="glass-card overflow-hidden rounded-2xl flex flex-col h-full border border-primary/8 hover:border-primary/20 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background"
       >
         {/* Image Banner */}
         <div
@@ -92,8 +92,8 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, categoryName }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80" />
 
           {/* Quick View slide-up overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-10 bg-white/94 backdrop-blur-sm border-t border-black/6 flex items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-            <span className="text-[9px] font-sans tracking-[0.12em] text-black font-semibold uppercase flex items-center gap-1">
+          <div className="absolute inset-x-0 bottom-0 h-10 bg-background/94 backdrop-blur-sm border-t border-primary/6 flex items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <span className="text-[9px] font-sans tracking-[0.12em] text-text-primary font-semibold uppercase flex items-center gap-1">
               <Eye className="h-3.5 w-3.5" />
               VIEW DETAILS
             </span>
@@ -104,8 +104,8 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, categoryName }) => {
             <div
               className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider backdrop-blur-md border ${
                 item.isVeg
-                  ? "bg-green-50/90 border-green-200 text-veg"
-                  : "bg-red-50/90 border-red-200 text-nonveg"
+                  ? "bg-veg/10 border-veg/20 text-veg"
+                  : "bg-nonveg/10 border-nonveg/20 text-nonveg"
               }`}
             >
               <span className={`h-1.5 w-1.5 rounded-full ${item.isVeg ? "bg-veg" : "bg-nonveg"}`} />
@@ -113,7 +113,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, categoryName }) => {
             </div>
 
             {item.isSpicy && (
-              <div className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider bg-red-50/90 border border-red-200 text-nonveg backdrop-blur-md">
+              <div className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider bg-nonveg/10 border border-nonveg/20 text-nonveg backdrop-blur-md">
                 <Flame className="h-3 w-3" />
                 Spicy
               </div>
@@ -122,39 +122,39 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, categoryName }) => {
         </div>
 
         {/* Content details */}
-        <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between gap-3 sm:gap-4 bg-[#FAF9F5]">
+        <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between gap-3 sm:gap-4 bg-surface">
           <div className="space-y-1.5" onClick={() => setShowDetail(true)}>
             <div className="flex justify-between items-start gap-2 cursor-pointer">
-              <h3 className="font-display text-sm sm:text-base font-semibold text-black line-clamp-1 group-hover:text-black">
+              <h3 className="font-display text-sm sm:text-base font-semibold text-text-primary line-clamp-1 group-hover:text-text-primary">
                 {item.name}
               </h3>
-              <div className="flex items-baseline font-mono text-black shrink-0">
-                <span className="text-[9px] text-[#8A8880] mr-0.5">₹</span>
+              <div className="flex items-baseline font-mono text-text-primary shrink-0">
+                <span className="text-[9px] text-text-muted mr-0.5">₹</span>
                 <span className="text-sm font-bold">{item.price}</span>
               </div>
             </div>
             {item.description && (
-              <p className="text-[11px] sm:text-xs text-[#555550] leading-relaxed line-clamp-2 font-light font-sans cursor-pointer">
+              <p className="text-[11px] sm:text-xs text-text-secondary leading-relaxed line-clamp-2 font-light font-sans cursor-pointer">
                 {item.description}
               </p>
             )}
           </div>
 
           {/* Cart controls */}
-          <div className="shrink-0 pt-2 border-t border-black/6">
+          <div className="shrink-0 pt-2 border-t border-primary/6">
             {quantity > 0 ? (
-              <div className="flex items-center justify-between border border-black/15 rounded-xl bg-white p-0.5">
+              <div className="flex items-center justify-between border border-primary/15 rounded-xl bg-background p-0.5">
                 <button
                   onClick={() => updateQuantity(item.name, quantity - 1)}
-                  className="p-2 text-[#555550] hover:text-black transition-colors duration-150 cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
+                  className="p-2 text-text-secondary hover:text-text-primary transition-colors duration-150 cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
                   aria-label="Decrease item quantity"
                 >
                   <Minus className="h-3.5 w-3.5" />
                 </button>
-                <span className="text-xs font-mono font-bold text-black">{quantity} added</span>
+                <span className="text-xs font-mono font-bold text-text-primary">{quantity} added</span>
                 <button
                   onClick={() => updateQuantity(item.name, quantity + 1)}
-                  className="p-2 text-[#555550] hover:text-black transition-colors duration-150 cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
+                  className="p-2 text-text-secondary hover:text-text-primary transition-colors duration-150 cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
                   aria-label="Increase item quantity"
                 >
                   <Plus className="h-3.5 w-3.5" />
@@ -163,7 +163,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, categoryName }) => {
             ) : (
               <button
                 onClick={() => addToCart(item)}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-black/15 hover:border-black bg-white hover:bg-black hover:text-white text-xs font-semibold uppercase tracking-wider text-[#555550] transition-colors duration-200 cursor-pointer min-h-[40px]"
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-primary/15 hover:border-primary bg-background hover:bg-primary hover:text-background text-xs font-semibold uppercase tracking-wider text-text-secondary transition-colors duration-200 cursor-pointer min-h-[40px]"
               >
                 <Plus className="h-3.5 w-3.5" />
                 Add to Order
@@ -188,14 +188,14 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, categoryName }) => {
               initial={{ opacity: 0, scale: 0.95, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 24 }}
-              className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-black/10 bg-white shadow-2xl z-10"
+              className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-primary/10 bg-background shadow-2xl z-10"
             >
               {/* Modal Banner */}
-              <div className="relative h-64 w-full overflow-hidden bg-[#FAF9F5]">
+              <div className="relative h-64 w-full overflow-hidden bg-surface">
                 <Image src={imageUrl} alt={item.name} fill className="object-cover" />
                 <button
                   onClick={() => setShowDetail(false)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white text-black transition-colors"
+                  className="absolute top-4 right-4 p-2 rounded-full bg-background/80 hover:bg-background text-text-primary transition-colors"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -204,12 +204,12 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, categoryName }) => {
               {/* Modal Body */}
               <div className="p-6 sm:p-8 space-y-4 text-left">
                 <div className="space-y-1">
-                  <span className="text-[9px] font-mono text-[#8A8880] uppercase tracking-widest">{categoryName}</span>
-                  <h3 className="font-display italic text-3xl text-black leading-tight">{item.name}</h3>
+                  <span className="text-[9px] font-mono text-text-muted uppercase tracking-widest">{categoryName}</span>
+                  <h3 className="font-display italic text-3xl text-text-primary leading-tight">{item.name}</h3>
                 </div>
 
                 {item.description && (
-                  <p className="text-xs sm:text-sm text-[#555550] leading-relaxed font-sans font-light">
+                  <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-sans font-light">
                     {item.description}
                   </p>
                 )}
@@ -218,22 +218,22 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, categoryName }) => {
                   <span
                     className={`text-[8px] font-sans tracking-wider font-bold uppercase px-2.5 py-1 rounded-full border ${
                       item.isVeg
-                        ? "bg-green-50 border-green-200 text-veg"
-                        : "bg-red-50 border-red-200 text-nonveg"
+                        ? "bg-veg/10 border-veg/20 text-veg"
+                        : "bg-nonveg/10 border-nonveg/20 text-nonveg"
                     }`}
                   >
                     {item.isVeg ? "VEGETARIAN" : "NON-VEGETARIAN"}
                   </span>
                   {item.isSpicy && (
-                    <span className="text-[8px] font-sans tracking-wider font-bold uppercase px-2.5 py-1 rounded-full border bg-red-50 border-red-200 text-nonveg">
+                    <span className="text-[8px] font-sans tracking-wider font-bold uppercase px-2.5 py-1 rounded-full border bg-nonveg/10 border border-nonveg/20 text-nonveg">
                       🌶 SPICY DISH
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-black/8">
-                  <div className="flex items-baseline font-mono text-black">
-                    <span className="text-xs text-[#8A8880] mr-1">₹</span>
+                <div className="flex items-center justify-between pt-4 border-t border-primary/8">
+                  <div className="flex items-baseline font-mono text-text-primary">
+                    <span className="text-xs text-text-muted mr-1">₹</span>
                     <span className="text-xl font-bold">{item.price}</span>
                   </div>
 
@@ -242,7 +242,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, categoryName }) => {
                       addToCart(item);
                       setShowDetail(false);
                     }}
-                    className="px-6 py-3 rounded-full bg-black hover:bg-[#111111] text-white text-xs font-semibold uppercase tracking-widest transition-colors duration-200"
+                    className="px-6 py-3 rounded-full bg-primary hover:bg-primary-light text-background text-xs font-semibold uppercase tracking-widest transition-colors duration-200"
                   >
                     Add to Order
                   </button>

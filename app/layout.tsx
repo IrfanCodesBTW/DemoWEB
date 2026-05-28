@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { ToastProvider } from "@/context/ToastContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const inter = Inter({
@@ -54,15 +55,38 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} h-full antialiased`}
-      style={{ colorScheme: "light" }}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-white text-[#111111] selection:bg-black selection:text-white">
-        <CartProvider>
-          <ToastProvider>
-            <CustomCursor />
-            {children}
-          </ToastProvider>
-        </CartProvider>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme');
+                  const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (theme === 'dark' || (!theme && supportDarkMode)) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.style.colorScheme = 'dark';
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.style.colorScheme = 'light';
+                  }
+                } catch (e) {}
+              })()
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-background text-text-primary selection:bg-primary selection:text-background transition-colors duration-300">
+        <ThemeProvider>
+          <CartProvider>
+            <ToastProvider>
+              <CustomCursor />
+              {children}
+            </ToastProvider>
+          </CartProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

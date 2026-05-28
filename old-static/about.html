@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuxDin | About Us</title>
+  <meta name="description" content="Discover the legacy of LuxDin Fine Dining. Read our heritage story, explore our cuisine philosophy, and view our image gallery.">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <style>
+    /* ==========================================================================
+       PAGE SPECIFIC CUSTOM STYLES (ABOUT)
+       ========================================================================== */
+    .about-header {
+      padding-top: 140px;
+      padding-bottom: var(--space-5);
+      background-color: var(--color-surface);
+      border-bottom: 1px solid rgba(164, 108, 50, 0.08);
+    }
+    
+    .story-section {
+      padding: var(--space-7) 0;
+      background-color: var(--color-bg);
+    }
+    
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      align-items: center;
+    }
+    
+    .story-content h3 {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-4);
+    }
+    
+    .story-content p {
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+      margin-bottom: var(--space-4);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    
+    /* Image Grid Collage */
+    .collage-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+    }
+    
+    .collage-item {
+      border-radius: var(--radius-xs);
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(164, 108, 50, 0.1);
+    }
+    
+    .collage-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration-med) var(--ease-premium);
+    }
+    
+    .collage-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .collage-wide {
+      grid-column: span 2;
+      aspect-ratio: 2 / 1;
+    }
+    
+    /* Heritage pillars and values */
+    .heritage-section {
+      padding: var(--space-7) 0;
+      background-color: var(--color-surface);
+      border-top: 1px solid rgba(164, 108, 50, 0.08);
+      border-bottom: 1px solid rgba(164, 108, 50, 0.08);
+    }
+    
+    .pillars-flex-row {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-5);
+      flex-wrap: wrap;
+    }
+    
+    .pillar-card {
+      background-color: var(--color-surface-raised);
+      border: 1px solid rgba(164, 108, 50, 0.15);
+      padding: var(--space-5);
+      border-radius: var(--radius-xs);
+      flex: 1;
+      min-width: 280px;
+      text-align: center;
+      color: var(--color-text-secondary);
+      transition: transform var(--duration-fast) var(--ease-premium);
+    }
+    
+    .pillar-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(164, 108, 50, 0.3);
+    }
+    
+    .pillar-icon {
+      font-size: 2.25rem;
+      color: var(--color-surface-base);
+      margin-bottom: var(--space-4);
+    }
+    
+    .pillar-title {
+      font-size: var(--text-md);
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+    }
+    
+    .pillar-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      opacity: 0.95;
+      font-weight: 300;
+    }
+    
+    /* Cuisine philosophy section */
+    .philosophy-section {
+      padding: var(--space-7) 0;
+      background-color: var(--color-bg);
+      text-align: center;
+    }
+    
+    .philosophy-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .philosophy-quote {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--color-text);
+      margin-bottom: var(--space-5);
+      position: relative;
+    }
+    
+    .philosophy-quote::before {
+      content: '“';
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: rgba(164, 108, 50, 0.2);
+      position: absolute;
+      top: -30px;
+      left: -20px;
+    }
+    
+    .philosophy-quote::after {
+      content: '”';
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: rgba(164, 108, 50, 0.2);
+      position: absolute;
+      bottom: -60px;
+      right: -20px;
+    }
+    
+    .philosophy-author {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: var(--space-4);
+    }
+    
+    /* Action row button links */
+    .about-action-row {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    /* Scroll reveal reveal-hidden state */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s var(--ease-premium), transform 0.7s var(--ease-premium);
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    @media (max-width: 1024px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .collage-grid {
+        grid-template-columns: 1fr;
+      }
+      .collage-wide {
+        grid-column: span 1;
+        aspect-ratio: 1 / 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION BAR
+       ========================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo-block" aria-label="LuxDin Logo">
+        <h1 class="logo-title">Lux<span>Din</span></h1>
+        <p class="logo-tagline">Fine Dining Secunderabad</p>
+      </a>
+      
+      <!-- Desktop nav -->
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="reservations.html" class="nav-link">Reservations</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <!-- Redirects to menu page with cart parameter -->
+        <a href="menu.html?cart=1" class="cart-btn" id="open-cart-btn" aria-label="Open Shopping Cart">
+          <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+          <span class="cart-count" id="cart-badge-count" style="display: none;">0</span>
+        </a>
+        
+        <!-- Mobile hamburger -->
+        <button type="button" class="menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Links Panel -->
+    <div class="mobile-nav-panel" id="mobile-nav-panel">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="menu.html" class="nav-link">Menu</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="reservations.html" class="nav-link">Reservations</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         PAGE SUB-HEADER
+         ========================================== -->
+    <section class="about-header">
+      <div class="container reveal">
+        <span class="section-label">Heritage</span>
+        <h2 class="section-title">The Culinary Story &amp; Ethos</h2>
+        <div class="section-divider" style="margin-left: 0;"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         RESTAURANT STORY & COLLAGE
+         ========================================== -->
+    <section class="story-section">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-content reveal">
+            <span class="section-label" style="text-align: left; margin-left: 0;">Who We Are</span>
+            <h3>Cultivating a Journey of Flavours</h3>
+            <p>
+              LuxDin Fine Dining has been a cornerstone of exquisite dining in Secunderabad for decades. We bring together the rich heritage of Indian clay-oven cooking, the fiery artistry of the Chinese wok, and the delicate balances of South Indian and Continental flavours. Our family-led kitchen is dedicated to using time-honored recipes, premium ingredients, and authentic spices to craft an unforgettable culinary journey for you.
+            </p>
+            <p>
+              We believe in culinary exploration without boundaries. Our recipes are refined across generations, combining age-old traditions of clay-oven tandoor roasting with the high-heat techniques of authentic Chinese cooking, ensuring every dish carries distinct character and balance.
+            </p>
+          </div>
+          
+          <!-- Collage of premium images -->
+          <div class="collage-grid reveal">
+            <div class="collage-item">
+              <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=300&h=300&fit=crop&q=80" alt="Tandoori chicken kebabs" loading="lazy">
+            </div>
+            <div class="collage-item">
+              <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=300&h=300&fit=crop&q=80" alt="Aromatic Chicken Dum Biryani" loading="lazy">
+            </div>
+            <div class="collage-item collage-wide">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=300&fit=crop&q=80" alt="Elegant restaurant interior hall details" loading="lazy">
+            </div>
+            <div class="collage-item collage-wide">
+              <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=600&h=300&fit=crop&q=80" alt="Indian breads and curries served on brass bowls" loading="lazy">
+            </div>
+            <div class="collage-item">
+              <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=300&h=300&fit=crop&q=80" alt="Various raw Indian spices in bowls" loading="lazy">
+            </div>
+            <div class="collage-item">
+              <img src="https://images.unsplash.com/photo-1625220194771-7ebedd0b4a11?w=300&h=300&fit=crop&q=80" alt="Fresh Chinese momos in a tray" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         HERITAGE PILLARS SECTION
+         ========================================== -->
+    <section class="heritage-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Foundations</span>
+          <h2 class="section-title">The Pillars of Our Kitchen</h2>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div class="pillars-flex-row reveal">
+          <!-- Pillar 1 -->
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
+            <h4 class="pillar-title">Family Run Since Decades</h4>
+            <p class="pillar-desc">
+              Passed down through generational ownership, our passion for hospitality and culinary excellence shapes every meal we serve.
+            </p>
+          </div>
+          
+          <!-- Pillar 2 -->
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-fire-burner" aria-hidden="true"></i></div>
+            <h4 class="pillar-title">100+ Menu Items</h4>
+            <p class="pillar-desc">
+              From traditional Indian tandoor grills and curries to stir-fried Oriental wok creations and Continental classics.
+            </p>
+          </div>
+          
+          <!-- Pillar 3 -->
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></div>
+            <h4 class="pillar-title">Open 7 Days a Week</h4>
+            <p class="pillar-desc">
+              Providing authentic service, early South Indian breakfast spreads, and multi-cuisine lunch and dinners daily.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CUISINE PHILOSOPHY
+         ========================================== -->
+    <section class="philosophy-section">
+      <div class="container">
+        <div class="philosophy-container reveal">
+          <span class="section-label">Philosophy</span>
+          <blockquote class="philosophy-quote">
+            We do not believe a single cuisine can define the dynamic textures of dining in Secunderabad. Food is a global convergence of paths, and our mission is to orchestrate that fusion perfectly, keeping authenticity intact in every dish we craft.
+          </blockquote>
+          <p class="philosophy-author">Head Chef &amp; Founders</p>
+          
+          <div class="about-action-row">
+            <a href="menu.html" class="btn btn-primary">Explore Menu <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
+            <a href="reservations.html" class="btn btn-secondary">Reserve a Table <i class="fa-solid fa-chair" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       GLOBAL FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2 class="footer-logo">Lux<span>Din</span></h2>
+          <p class="footer-tagline">Fine Dining Secunderabad</p>
+          <p class="footer-desc">
+            Secunderabad's premier multi-cuisine culinary destination. Discover the fine tastes of global culinary excellence from the traditional tandoor to the oriental wok.
+          </p>
+        </div>
+        
+        <div class="footer-links-col">
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link-item">Home</a></li>
+            <li><a href="menu.html" class="footer-link-item">Explore Menu</a></li>
+            <li><a href="about.html" class="footer-link-item">About Us</a></li>
+            <li><a href="contact.html" class="footer-link-item">Find Location</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links-col">
+          <h3 class="footer-col-title">Experience</h3>
+          <ul class="footer-links-list">
+            <li><a href="reservations.html" class="footer-link-item">Book a Table</a></li>
+            <li><a href="contact.html" class="footer-link-item">Hours &amp; Contact</a></li>
+            <li><a href="menu.html?cart=1" class="footer-link-item">Dine-in / Takeaway</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2025 LuxDin. All rights reserved.</p>
+        <p class="footer-copyright" style="color: var(--color-muted); font-size: 11px;">Designed with LuxDin Aesthetic Architecture</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       SCRIPTS SYSTEM
+       ========================================== -->
+  <script src="script.js"></script>
+</body>
+</html>

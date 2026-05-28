@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+:root {
+  /* ─── Background ─── */
+  --background: #FFFFFF;
+  --surface: #FAF9F5;
+  --surface-2: #F4F2EC;
+  --surface-3: #EBE9E2;
+
+  /* ─── Accents ─── */
+  --primary: #111111;
+  --primary-light: #2D2D2D;
+  --primary-dark: #000000;
+
+  --accent: #111111;
+  --accent-light: #2D2D2D;
+
+  --gold: #111111;
+  --gold-soft: #555550;
+
+  /* ─── Text ─── */
+  --text-primary: #111111;
+  --text-secondary: #555550;
+  --text-muted: #8A8880;
+
+  /* ─── Borders ─── */
+  --border: rgba(0, 0, 0, 0.08);
+
+  /* ─── Status ─── */
+  --veg: #22C55E;
+  --nonveg: #EF4444;
+  --success: #22C55E;
+  --error: #EF4444;
+
+  /* ─── Glass Surfaces (light gray/off-white translucent) ─── */
+  --glass: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-hover: rgba(0, 0, 0, 0.03);
+
+  --foreground: #111111;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border-custom: var(--border);
+  --color-veg: var(--veg);
+  --color-nonveg: var(--nonveg);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-glass-hover: var(--glass-hover);
+  
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-mono: var(--font-mono), monospace;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EBE9E2;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #111111;
+}
+
+/* ─── Base Resets & Typography ─── */
+html {
+  scroll-behavior: smooth;
+  background-color: #FFFFFF;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── Cinematic Typography ─── */
+.text-cinematic-hero {
+  font-size: clamp(2.75rem, 7vw, 7rem);
+  line-height: 0.95;
+  font-family: var(--font-playfair), serif;
+}
+
+.text-section-title {
+  font-size: clamp(1.75rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
+  font-family: var(--font-playfair), serif;
+}
+
+/* ─── Glassmorphism ─── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.glass-card {
+  background: rgba(250, 249, 245, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              background-color 0.35s ease;
+}
+
+.glass-card:hover {
+  background: rgba(244, 242, 236, 0.9);
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+/* ─── Glow Gradients ─── */
+.gold-glow {
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.03) 0%, transparent 70%);
+}
+
+.saffron-glow {
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.02) 0%, transparent 75%);
+}
+
+/* ─── Focus Outlines ─── */
+.focus-visible-ring:focus-visible {
+  outline: 2px solid #111111;
+  outline-offset: 2px;
+}
+
+/* ─── Text Effects ─── */
+.text-stroke-gold {
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
+  color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #111111 0%, #444440 50%, #000000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-saffron {
+  background: linear-gradient(135deg, #222222 0%, #444440 50%, #111111 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Body Scroll Lock ─── */
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* ─── Select Dropdown Styling ─── */
+select option {
+  background-color: #FAF9F5;
+  color: #111111;
+}
+
+/* ─── Scrollbar-none Utility ─── */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

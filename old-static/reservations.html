@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuxDin | Book a Table</title>
+  <meta name="description" content="Reserve your table online at LuxDin Fine Dining. Choose dates, guest numbers, and dining times for Secunderabad's finest dining.">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <style>
+    /* ==========================================================================
+       PAGE SPECIFIC CUSTOM STYLES (RESERVATIONS)
+       ========================================================================== */
+    .res-page-header {
+      padding-top: 140px;
+      padding-bottom: var(--space-5);
+      background-color: var(--color-surface);
+      border-bottom: 1px solid rgba(164, 108, 50, 0.08);
+    }
+    
+    .res-section {
+      padding: var(--space-7) 0;
+      background-color: var(--color-bg);
+      position: relative;
+    }
+    
+    .res-card-wrapper {
+      background-color: var(--color-surface);
+      border: 1px solid rgba(164, 108, 50, 0.1);
+      border-radius: var(--radius-xs);
+      padding: var(--space-6);
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+    }
+    
+    .res-title-box {
+      text-align: center;
+      margin-bottom: var(--space-5);
+    }
+    
+    .res-main-title {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-2);
+    }
+    
+    .res-main-desc {
+      color: var(--color-muted);
+      font-size: var(--text-sm);
+      font-weight: 300;
+    }
+    
+    .res-grid-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+    
+    .form-group-full {
+      grid-column: span 2;
+    }
+    
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .btn-submit-booking {
+      width: 100%;
+      margin-top: var(--space-4);
+      padding: 18px 0;
+    }
+    
+    /* Scroll reveal reveal-hidden state */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease-premium), transform 0.6s var(--ease-premium);
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    @media (max-width: 768px) {
+      .res-grid-form {
+        grid-template-columns: 1fr;
+      }
+      .form-group-full {
+        grid-column: span 1;
+      }
+      .res-card-wrapper {
+        padding: var(--space-5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION BAR
+       ========================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo-block" aria-label="LuxDin Logo">
+        <h1 class="logo-title">Lux<span>Din</span></h1>
+        <p class="logo-tagline">Fine Dining Secunderabad</p>
+      </a>
+      
+      <!-- Desktop nav -->
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="reservations.html" class="nav-link">Reservations</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <!-- Redirects to menu with cart query -->
+        <a href="menu.html?cart=1" class="cart-btn" id="open-cart-btn" aria-label="Open Shopping Cart">
+          <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+          <span class="cart-count" id="cart-badge-count" style="display: none;">0</span>
+        </a>
+        
+        <!-- Mobile hamburger -->
+        <button type="button" class="menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Links Panel -->
+    <div class="mobile-nav-panel" id="mobile-nav-panel">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="menu.html" class="nav-link">Menu</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="reservations.html" class="nav-link">Reservations</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         PAGE SUB-HEADER
+         ========================================== -->
+    <section class="res-page-header">
+      <div class="container reveal">
+        <span class="section-label">Bookings</span>
+        <h2 class="section-title">Table Reservations</h2>
+        <div class="section-divider" style="margin-left: 0;"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         RESERVATION FORM
+         ========================================== -->
+    <section class="res-section">
+      <div class="container">
+        <div class="res-card-wrapper reveal">
+          <div class="res-title-box">
+            <h3 class="res-main-title">Book A Dining Table</h3>
+            <p class="res-main-desc">Savour our multi-cuisine dining options. Choose your date and time slot below.</p>
+          </div>
+          
+          <form id="table-booking-form" novalidate>
+            <div class="res-grid-form">
+              
+              <!-- Full Name -->
+              <div class="form-group">
+                <label for="res-name" class="form-label">Full Name</label>
+                <input type="text" id="res-name" class="form-control" placeholder="Enter your full name" required>
+                <p class="form-error-msg" id="res-name-error">Full name is required.</p>
+              </div>
+              
+              <!-- Phone Number -->
+              <div class="form-group">
+                <label for="res-phone" class="form-label">Phone Number</label>
+                <input type="tel" id="res-phone" class="form-control" placeholder="Enter 10-digit mobile number" required>
+                <p class="form-error-msg" id="res-phone-error">Please enter a valid 10-digit phone number.</p>
+              </div>
+              
+              <!-- Date Picker -->
+              <div class="form-group">
+                <label for="res-date" class="form-label">Dining Date</label>
+                <input type="date" id="res-date" class="form-control" required>
+                <p class="form-error-msg" id="res-date-error">A future date selection is required.</p>
+              </div>
+              
+              <!-- Time Dropdown -->
+              <div class="form-group">
+                <label for="res-time" class="form-label">Dining Time</label>
+                <select id="res-time" class="form-control" required>
+                  <option value="" disabled selected>Select dining slot</option>
+                  <!-- Filled by script -->
+                </select>
+                <p class="form-error-msg" id="res-time-error">Please select a time slot.</p>
+              </div>
+              
+              <!-- Number of guests -->
+              <div class="form-group">
+                <label for="res-guests" class="form-label">Number of Guests</label>
+                <select id="res-guests" class="form-control" required>
+                  <option value="1">1 Guest</option>
+                  <option value="2" selected>2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6">6 Guests</option>
+                  <option value="8">8 Guests</option>
+                  <option value="10">10 Guests</option>
+                  <option value="12">12 Guests</option>
+                  <option value="15">15 Guests</option>
+                  <option value="20">20 Guests</option>
+                </select>
+                <p class="form-error-msg">Please specify the guest count.</p>
+              </div>
+              
+              <!-- Special requests -->
+              <div class="form-group form-group-full">
+                <label for="res-requests" class="form-label">Special Requests</label>
+                <textarea id="res-requests" class="form-control" placeholder="E.g., high chairs, window seat, allergen details..."></textarea>
+              </div>
+              
+              <!-- Submit Button -->
+              <div class="form-group-full">
+                <button type="submit" class="btn btn-primary btn-submit-booking">Confirm Table Reservation <i class="fa-solid fa-chair" aria-hidden="true"></i></button>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       GLOBAL FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2 class="footer-logo">Lux<span>Din</span></h2>
+          <p class="footer-tagline">Fine Dining Secunderabad</p>
+          <p class="footer-desc">
+            Secunderabad's premier multi-cuisine culinary destination. Discover the fine tastes of global culinary excellence from the traditional tandoor to the oriental wok.
+          </p>
+        </div>
+        
+        <div class="footer-links-col">
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link-item">Home</a></li>
+            <li><a href="menu.html" class="footer-link-item">Explore Menu</a></li>
+            <li><a href="about.html" class="footer-link-item">About Us</a></li>
+            <li><a href="contact.html" class="footer-link-item">Find Location</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links-col">
+          <h3 class="footer-col-title">Experience</h3>
+          <ul class="footer-links-list">
+            <li><a href="reservations.html" class="footer-link-item">Book a Table</a></li>
+            <li><a href="contact.html" class="footer-link-item">Hours &amp; Contact</a></li>
+            <li><a href="menu.html?cart=1" class="footer-link-item">Dine-in / Takeaway</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2025 LuxDin. All rights reserved.</p>
+        <p class="footer-copyright" style="color: var(--color-muted); font-size: 11px;">Designed with LuxDin Aesthetic Architecture</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       SCRIPTS SYSTEM
+       ========================================== -->
+  <script src="script.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initBookingForm();
+    });
+
+    function initBookingForm() {
+      const form = document.getElementById('table-booking-form');
+      const dateInput = document.getElementById('res-date');
+      const timeSelect = document.getElementById('res-time');
+
+      if (!form || !dateInput || !timeSelect) return;
+
+      // Restrict past dates in calendar
+      const today = new Date();
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const yyyy = today.getFullYear();
+      const minDate = `${yyyy}-${mm}-${dd}`;
+      dateInput.min = minDate;
+
+      // Populate 30-min slots: 07:30 AM to 10:30 PM
+      const slots = [];
+      for (let h = 7; h <= 22; h++) {
+        for (let m = 0; m < 60; m += 30) {
+          if (h === 7 && m < 30) continue; // Start at 7:30 AM
+          if (h === 22 && m > 30) continue; // End at 10:30 PM (22:30)
+
+          let displayHour = h % 12;
+          if (displayHour === 0) displayHour = 12;
+          const displayMin = String(m).padStart(2, '0');
+          const ampm = h >= 12 ? "PM" : "AM";
+
+          const label = `${displayHour}:${displayMin} ${ampm}`;
+          const val = `${String(h).padStart(2, '0')}:${displayMin}`;
+          slots.push({ label, val });
+        }
+      }
+
+      timeSelect.innerHTML = '<option value="" disabled selected>Select dining slot</option>' + 
+        slots.map(s => `<option value="${s.val}">${s.label}</option>`).join('');
+
+      // Validation
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nameVal = document.getElementById('res-name').value.trim();
+        const phoneVal = document.getElementById('res-phone').value.trim();
+        const dateVal = dateInput.value;
+        const timeVal = timeSelect.value;
+
+        let isValid = true;
+
+        // Name
+        if (!nameVal) {
+          document.getElementById('res-name').parentElement.classList.add('has-error');
+          isValid = false;
+        } else {
+          document.getElementById('res-name').parentElement.classList.remove('has-error');
+        }
+
+        // Phone
+        const phoneRegex = /^[0-9]{10}$/;
+        if (!phoneRegex.test(phoneVal)) {
+          document.getElementById('res-phone').parentElement.classList.add('has-error');
+          isValid = false;
+        } else {
+          document.getElementById('res-phone').parentElement.classList.remove('has-error');
+        }
+
+        // Date
+        if (!dateVal) {
+          dateInput.parentElement.classList.add('has-error');
+          isValid = false;
+        } else {
+          const selectedDate = new Date(dateVal);
+          const currentDate = new Date(minDate);
+          if (selectedDate < currentDate) {
+            dateInput.parentElement.classList.add('has-error');
+            isValid = false;
+          } else {
+            dateInput.parentElement.classList.remove('has-error');
+          }
+        }
+
+        // Time
+        if (!timeVal) {
+          timeSelect.parentElement.classList.add('has-error');
+          isValid = false;
+        } else {
+          timeSelect.parentElement.classList.remove('has-error');
+        }
+
+        if (!isValid) {
+          window.showToast("Please fill all booking details correctly.", "error");
+          return;
+        }
+
+        // Success toast triggers
+        window.showToast(`Table booked successfully for ${nameVal}! see you soon.`, "success");
+        form.reset();
+      });
+    }
+  </script>
+</body>
+</html>
